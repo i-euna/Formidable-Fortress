@@ -47,11 +47,11 @@ public class CannonShooter : MonoBehaviour
         Vector3 launchDirection = (targetPosition - cannonPosition).normalized;
 
         // Calculate the horizontal distance to the target
-        float horizontalDistance = Vector3.Distance(targetPosition, cannonPosition);
+        //float horizontalDistance = Vector3.Distance(targetPosition, cannonPosition);
 
         // Calculate the initial velocity required to reach the target
         float gravity = 9.81f;
-        InitialVelocity.Value = Mathf.Sqrt(horizontalDistance * gravity / Mathf.Sin(2 * LaunchAngle.Value * Mathf.Deg2Rad));
+        //InitialVelocity.Value = Mathf.Sqrt(horizontalDistance * gravity / Mathf.Sin(2 * LaunchAngle.Value * Mathf.Deg2Rad));
 
         // Calculate the launch velocity components
         float horizontalVelocity = InitialVelocity.Value * Mathf.Cos(LaunchAngle.Value * Mathf.Deg2Rad);
@@ -59,7 +59,7 @@ public class CannonShooter : MonoBehaviour
 
         // Apply the launch velocity to the cannon's Rigidbody
         CannonRigidBody.constraints = RigidbodyConstraints2D.None;
-        CannonRigidBody.velocity = new Vector3(horizontalVelocity * launchDirection.x, verticalVelocity, horizontalVelocity * launchDirection.z);
+        CannonRigidBody.velocity = new Vector3(horizontalVelocity * launchDirection.x, verticalVelocity, 0);
     }
 
     public void UpdateCannonStatus() {
