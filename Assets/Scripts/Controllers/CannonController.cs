@@ -38,7 +38,6 @@ public class CannonController : MonoBehaviour
     }
 
     public void PrepareNextCannon() {
-        Debug.Log("Next bullet is ready");
         GameObject newCannon = CannonPool.ObjectPool.Get();
         
         newCannon.transform.position = InitialPos;

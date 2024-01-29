@@ -26,11 +26,15 @@ public class CannonShooter : MonoBehaviour
     [SerializeField]
     private FloatVariable InitialVelocity;
 
-    private Rigidbody2D CannonRigidBody;
+    private Rigidbody2D Rb;
+
+    private Vector3 TargetPosition;
+    private float ElapsedTime = 0f;
+    Vector3 velocity = Vector3.zero;
 
     private void Start()
     {
-        CannonRigidBody = GetComponent<Rigidbody2D>();
+        Rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnEnable()
@@ -40,26 +44,25 @@ public class CannonShooter : MonoBehaviour
 
     public void Shoot() {
 
-        // Rotate the cannon to face the target
-        Vector3 targetPosition = Camera.main.ScreenToWorldPoint(MouseTapPos.Value);
+        Vector3 TargetPosition = Camera.main.ScreenToWorldPoint(MouseTapPos.Value);
+       
+        TargetPosition.z = transform.position.z;
+        Rb.constraints = RigidbodyConstraints2D.None;
+        IsFired = true;
+        //Vector3 cannonPosition = transform.position;
+        //Vector3 shootDirection = (targetPosition - cannonPosition).normalized;
+    }
 
-        Vector3 cannonPosition = transform.position;
-        Vector3 launchDirection = (targetPosition - cannonPosition).normalized;
-
-        // Calculate the horizontal distance to the target
-        float horizontalDistance = Vector3.Distance(targetPosition, cannonPosition);
-
-        // Calculate the initial velocity required to reach the target
-        float gravity = 9.81f;
-        InitialVelocity.Value = Mathf.Sqrt(horizontalDistance * gravity / Mathf.Sin(2 * LaunchAngle.Value * Mathf.Deg2Rad));
-
-        // Calculate the launch velocity components
-        float horizontalVelocity = InitialVelocity.Value * Mathf.Cos(LaunchAngle.Value * Mathf.Deg2Rad);
-        float verticalVelocity = InitialVelocity.Value * Mathf.Sin(LaunchAngle.Value * Mathf.Deg2Rad);
-
-        // Apply the launch velocity to the cannon's Rigidbody
-        CannonRigidBody.constraints = RigidbodyConstraints2D.None;
-        CannonRigidBody.velocity = new Vector3(horizontalVelocity * launchDirection.x, verticalVelocity, horizontalVelocity * launchDirection.z);
+    private void Update()
+    {
+        if(IsFired)
+            Move();
+    }
+    void Move()
+    {
+        Vector3 TargetPosition = Camera.main.ScreenToWorldPoint(MouseTapPos.Value);
+        TargetPosition.z = transform.position.z;
+        transform.position = Vector3.SmoothDamp(transform.position, TargetPosition, ref velocity, 0.5f);
     }
 
     public void UpdateCannonStatus() {
@@ -68,10 +71,8 @@ public class CannonShooter : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("collided " + other.gameObject.name);
         if (IsFired)
         {
-            Debug.Log("Sending back to pool");
             IsFired = false;
             CannonPool.ObjectPool.Release(gameObject);
             CannonFiredEvent.Raise();
