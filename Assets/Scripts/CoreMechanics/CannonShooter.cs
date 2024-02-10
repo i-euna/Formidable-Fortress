@@ -43,12 +43,7 @@ public class CannonShooter : MonoBehaviour
     }
 
     public void Shoot() {
-
-        Vector3 TargetPosition = Camera.main.ScreenToWorldPoint(MouseTapPos.Value);
-       
-        TargetPosition.z = transform.position.z;
-        Rb.constraints = RigidbodyConstraints2D.None;
-        IsFired = true;
+        
         //Vector3 cannonPosition = transform.position;
         //Vector3 shootDirection = (targetPosition - cannonPosition).normalized;
     }
@@ -65,7 +60,14 @@ public class CannonShooter : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, TargetPosition, ref velocity, 0.5f);
     }
 
-    public void UpdateCannonStatus() {
+    public void FireCannon() {
+        Debug.Log("Shoot");
+        Vector3 TargetPosition = Camera.main.ScreenToWorldPoint(MouseTapPos.Value);
+        Rb.constraints = RigidbodyConstraints2D.None;
+        Rb.freezeRotation = true;
+
+        TargetPosition.z = transform.position.z;
+
         IsFired = true;
     }
 

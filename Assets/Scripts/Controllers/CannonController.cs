@@ -18,10 +18,18 @@ public class CannonController : MonoBehaviour
     private IntVariable MaxNoOfCannon;
 
     private Vector3 InitialPos;
+    private Quaternion InitialRot;
+    private Vector3 CannonParentPos;
+    private Quaternion CannonParentRot;
+
+    public GameObject CannonParent;
 
 
     void Start()
     {
+        CannonParentPos = CannonParent.transform.position;
+        CannonParentRot = CannonParent.transform.rotation;
+
         FiredCannons = new Stack();
         //Initialize the pool
         CannonPool.ObjectPool = new ObjectPool<GameObject>(() =>
@@ -34,6 +42,7 @@ public class CannonController : MonoBehaviour
         MaxNoOfCannon.Value
         );
         InitialPos = CannonPrefab.transform.position;
+        InitialRot = Quaternion.identity;
         PrepareNextCannon();
     }
 
@@ -41,7 +50,12 @@ public class CannonController : MonoBehaviour
         GameObject newCannon = CannonPool.ObjectPool.Get();
         
         newCannon.transform.position = InitialPos;
+        newCannon.transform.rotation = Quaternion.identity;
 
+        //CannonParent.transform.position = CannonParentPos;
+        //CannonParent.transform.rotation = Quaternion.identity;
+
+        //newCannon.transform.parent = CannonParent.transform;
         newCannon.SetActive(true);
     }
 }

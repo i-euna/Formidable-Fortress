@@ -22,6 +22,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
+            Debug.Log("Fire Event");
             MouseTapPos.Value = Input.mousePosition;
             PlayerTapInput.Raise();
         }

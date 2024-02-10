@@ -5,8 +5,8 @@ using UnityEngine;
 public class ShootingArc : MonoBehaviour
 {
     [Header("Trajectory parameters")]
-    [SerializeField] private float MaxDuration = 5f; //Stop Arc simulation
-    [SerializeField] private float TimeStepInterval = 0.1f; //1 point every 0.1 second
+    [SerializeField] private float MaxDuration = 5f;
+    [SerializeField] private float TimeStepInterval = 0.1f;
     [SerializeField] private float Force;
     [SerializeField] private Transform CannonBall;
 
@@ -18,16 +18,12 @@ public class ShootingArc : MonoBehaviour
 
     void Update()
     {
-        // Get the mouse position in screen coordinates
         Vector3 mousePosition = Input.mousePosition;
 
-    
-        // Set the mouse position in world coordinates with the given distance
         Vector3 targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
 
         targetPosition.z = 0;
 
-        // Make the object look at the mouse position
         transform.up = targetPosition - transform.position;
         SetLineRendererPositions(Arc);
     }
@@ -36,10 +32,8 @@ public class ShootingArc : MonoBehaviour
     {
         List<Vector2> linePoints = FindTrajectoryPoints();
 
-        // Set the number of positions in the LineRenderer
         lineRenderer.positionCount = linePoints.Count;
 
-        // Set the positions for the LineRenderer
         for (int i = 0; i < linePoints.Count; i++)
         {
             lineRenderer.SetPosition(i, linePoints[i]);
@@ -60,8 +54,6 @@ public class ShootingArc : MonoBehaviour
             calculatedPosition.y += Physics2D.gravity.y / 2 * Mathf.Pow(i * TimeStepInterval, 2); // taking g into consideration
             linePoints.Add(calculatedPosition);
         }
-
-
 
         return linePoints;
     }
