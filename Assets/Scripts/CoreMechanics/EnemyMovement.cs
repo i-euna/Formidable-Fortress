@@ -8,16 +8,6 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField]
     private FloatVariable Speed;
-
-    [Tooltip("Enemy pool")]
-    [SerializeField]
-    private ObjectPoolVariable EnemyPool;
-
-    [SerializeField]
-    private GameEvent EnemyKilledEvent;
-
-    [SerializeField]
-    private IntVariable Score;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -26,15 +16,5 @@ public class EnemyMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = new Vector3(-Speed.Value, 0, 0);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.tag != "Ground")
-        {
-            Score.Value++;
-            EnemyKilledEvent.Raise();
-            EnemyPool.ObjectPool.Release(gameObject);
-        }    
     }
 }
