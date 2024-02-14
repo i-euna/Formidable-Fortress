@@ -25,6 +25,7 @@ public class ShootingArc : MonoBehaviour
     private void Start()
     {
         isFiringCannon.value = false;
+        PathToFollow.points.Clear();
     }
 
     void Update()

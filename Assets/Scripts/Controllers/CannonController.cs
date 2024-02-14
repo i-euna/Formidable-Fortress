@@ -35,7 +35,9 @@ public class CannonController : MonoBehaviour
         CannonPool.ObjectPool = new ObjectPool<GameObject>(() =>
         { return Instantiate(CannonPrefab); },
         dice => { dice.SetActive(true); },
-        dice => { dice.SetActive(false); },
+        dice => {
+            dice.SetActive(false); 
+        },
         dice => { Destroy(dice); },
         false,
         MaxNoOfCannon.Value,
@@ -47,11 +49,14 @@ public class CannonController : MonoBehaviour
     }
 
     public void PrepareNextCannon() {
-        GameObject newCannon = CannonPool.ObjectPool.Get();
-        
+        GameObject newCannon = Instantiate(CannonPrefab);
+
+        //CannonPool.ObjectPool.Get();
+
         newCannon.transform.position = InitialPos;
         newCannon.transform.rotation = Quaternion.identity;
-
+        //newCannon.GetComponent<Rigidbody2D>().centerOfMass =
+          //  CannonPrefab.GetComponent<Rigidbody2D>().centerOfMass;
         //CannonParent.transform.position = CannonParentPos;
         //CannonParent.transform.rotation = Quaternion.identity;
 

@@ -41,11 +41,10 @@ public class CannonShooter : MonoBehaviour
 
     [SerializeField]
     private BoolVariable isFiringCannon;
-
+    public Vector3 com;
     private void Start()
     {
         Rb = GetComponent<Rigidbody2D>();
-
     }
 
     private void OnEnable()
@@ -66,7 +65,6 @@ public class CannonShooter : MonoBehaviour
     }
     void Move()
     {
-        Debug.Log("currentPointIndex " + currentPointIndex);
          float speed = 5f;
         // Check if the object has reached the current point
         if (Vector2.Distance(transform.position, Path[currentPointIndex]) <= 0.1f)
@@ -84,12 +82,10 @@ public class CannonShooter : MonoBehaviour
     }
 
     public void FireCannon() {
-        Debug.Log("Shoot");
         Path = PathToFollow.points;
-        Debug.Log("Total Points " + PathToFollow.points.Count);
         Vector3 TargetPosition = Camera.main.ScreenToWorldPoint(MouseTapPos.Value);
-        Rb.constraints = RigidbodyConstraints2D.None;
-        Rb.freezeRotation = true;
+        //Rb.constraints = RigidbodyConstraints2D.None;
+        //Rb.freezeRotation = true;
 
         TargetPosition.z = transform.position.z;
 
@@ -105,8 +101,10 @@ public class CannonShooter : MonoBehaviour
             Path.Clear();
             PathToFollow.points.Clear();
             IsFired = false;
-            CannonPool.ObjectPool.Release(gameObject);
             CannonFiredEvent.Raise();
+            //gameObject.SetActive(false);
+            //CannonPool.ObjectPool.Release(gameObject);
+            Destroy(gameObject);
         }
 
     }

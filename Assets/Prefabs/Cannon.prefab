@@ -143,6 +143,7 @@ MonoBehaviour:
   InitialVelocity: {fileID: 11400000, guid: 4b08e33f96b90fc4a8612747f2a56585, type: 2}
   PathToFollow: {fileID: 11400000, guid: 0f9c61e320388ad4ea4beb5a7b5e619d, type: 2}
   isFiringCannon: {fileID: 11400000, guid: 7f661ff35f9df174ab07a26608762cfa, type: 2}
+  com: {x: 0, y: 0, z: 0}
 --- !u!50 &4169138542130032261
 Rigidbody2D:
   serializedVersion: 4
@@ -151,7 +152,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3370032792691091295}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -169,7 +170,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!114 &5275578466317976838
 MonoBehaviour:
   m_ObjectHideFlags: 0
