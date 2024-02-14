@@ -12,7 +12,6 @@ public class TextUpdate : MonoBehaviour
     [SerializeField]
     private string Name;
 
-
     public void UpdateText() {
         TextComponent.text = Name + TextValue.Value;
     }

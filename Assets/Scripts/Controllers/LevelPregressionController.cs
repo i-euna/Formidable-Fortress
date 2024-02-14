@@ -62,6 +62,6 @@ public class LevelPregressionController : MonoBehaviour
     }
 
     void HandleSuccess() {
-        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+        SceneManager.LoadScene("LevelOver", LoadSceneMode.Single);
     }
 }
