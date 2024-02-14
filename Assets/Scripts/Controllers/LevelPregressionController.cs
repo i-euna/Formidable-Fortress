@@ -20,9 +20,7 @@ public class LevelPregressionController : MonoBehaviour
         EnemyDeathEvent.Event.AddListener(CheckLevelSuccess);
     }
 
-    public void CheckLevelSuccess(string enemyType)
-    {
-        Dictionary<EnemyType, int> req = LevelProgressionSettings.LevelRequirement[CurrentLevel];
+    void UpdateDeadEnemyCount(string enemyType) {
         //update dead enemy count
         int count = 0;
         EnemyType type = ParseEnum.Parse<EnemyType>(enemyType);
@@ -31,10 +29,18 @@ public class LevelPregressionController : MonoBehaviour
             count++;
             KillCount[type] = count;
         }
-        else {
+        else
+        {
             count = 1;
             KillCount.Add(type, count);
         }
+    }
+
+    public void CheckLevelSuccess(string enemyType)
+    {
+        UpdateDeadEnemyCount(enemyType);
+        Dictionary<EnemyType, int> req = LevelProgressionSettings.LevelRequirement[CurrentLevel];
+        
         //check if its added properly, remove later
         foreach (KeyValuePair<EnemyType, int> r in KillCount)
         {
