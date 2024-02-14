@@ -241,6 +241,8 @@ MonoBehaviour:
   Force: 300
   CannonBall: {fileID: 0}
   Arc: {fileID: 467770050}
+  PathToFollow: {fileID: 0}
+  isFiringCannon: {fileID: 0}
 --- !u!212 &467770048
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -821,6 +823,8 @@ MonoBehaviour:
   Force: 800
   CannonBall: {fileID: 3527977557048931573, guid: b5ae157e6a7c65e40ae78c22d7de2e62, type: 3}
   Arc: {fileID: 922373707}
+  PathToFollow: {fileID: 11400000, guid: 0f9c61e320388ad4ea4beb5a7b5e619d, type: 2}
+  isFiringCannon: {fileID: 11400000, guid: 7f661ff35f9df174ab07a26608762cfa, type: 2}
 --- !u!120 &922373707
 LineRenderer:
   serializedVersion: 2

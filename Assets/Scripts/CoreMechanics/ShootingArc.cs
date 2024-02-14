@@ -16,16 +16,30 @@ public class ShootingArc : MonoBehaviour
     private float Velocity;
     private float Mass = 1f;
 
+    [SerializeField]
+    private Vector2List PathToFollow;
+
+    [SerializeField]
+    private BoolVariable isFiringCannon;
+
+    private void Start()
+    {
+        isFiringCannon.value = false;
+    }
+
     void Update()
     {
-        Vector3 mousePosition = Input.mousePosition;
+        if (!isFiringCannon.value) {
+            Vector3 mousePosition = Input.mousePosition;
 
-        Vector3 targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
+            Vector3 targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
 
-        targetPosition.z = 0;
+            targetPosition.z = 0;
 
-        transform.up = targetPosition - transform.position;
-        SetLineRendererPositions(Arc);
+            transform.up = targetPosition - transform.position;
+
+            SetLineRendererPositions(Arc);
+        } 
     }
 
     private void SetLineRendererPositions(LineRenderer lineRenderer)
@@ -54,7 +68,7 @@ public class ShootingArc : MonoBehaviour
             calculatedPosition.y += Physics2D.gravity.y / 2 * Mathf.Pow(i * TimeStepInterval, 2); // taking g into consideration
             linePoints.Add(calculatedPosition);
         }
-
+        PathToFollow.points = linePoints;
         return linePoints;
     }
 }

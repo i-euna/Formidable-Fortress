@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CannonShooter : MonoBehaviour
@@ -32,9 +33,19 @@ public class CannonShooter : MonoBehaviour
     private float ElapsedTime = 0f;
     Vector3 velocity = Vector3.zero;
 
+    [SerializeField]
+    private Vector2List PathToFollow;
+    private List<Vector2> Path;
+
+    private int currentPointIndex = 0;
+
+    [SerializeField]
+    private BoolVariable isFiringCannon;
+
     private void Start()
     {
         Rb = GetComponent<Rigidbody2D>();
+
     }
 
     private void OnEnable()
@@ -55,19 +66,34 @@ public class CannonShooter : MonoBehaviour
     }
     void Move()
     {
-        Vector3 TargetPosition = Camera.main.ScreenToWorldPoint(MouseTapPos.Value);
-        TargetPosition.z = transform.position.z;
-        transform.position = Vector3.SmoothDamp(transform.position, TargetPosition, ref velocity, 0.5f);
+        Debug.Log("currentPointIndex " + currentPointIndex);
+         float speed = 5f;
+        // Check if the object has reached the current point
+        if (Vector2.Distance(transform.position, Path[currentPointIndex]) <= 0.1f)
+        {
+            // Move to the next point on the path
+            currentPointIndex = (currentPointIndex + 1) % Path.Count;
+        }
+
+        // Move the object towards the current point on the path
+        Vector2 direction = (Path[currentPointIndex] - (Vector2)transform.position).normalized;
+        transform.Translate(direction * speed * Time.deltaTime);
+        //    Vector3 TargetPosition = Camera.main.ScreenToWorldPoint(MouseTapPos.Value);
+        //    TargetPosition.z = transform.position.z;
+        //    transform.position = Vector3.SmoothDamp(transform.position, TargetPosition, ref velocity, 0.5f);
     }
 
     public void FireCannon() {
         Debug.Log("Shoot");
+        Path = PathToFollow.points;
+        Debug.Log("Total Points " + PathToFollow.points.Count);
         Vector3 TargetPosition = Camera.main.ScreenToWorldPoint(MouseTapPos.Value);
         Rb.constraints = RigidbodyConstraints2D.None;
         Rb.freezeRotation = true;
 
         TargetPosition.z = transform.position.z;
 
+        isFiringCannon.value = true;
         IsFired = true;
     }
 
@@ -75,6 +101,9 @@ public class CannonShooter : MonoBehaviour
     {
         if (IsFired)
         {
+            isFiringCannon.value = false;
+            Path.Clear();
+            PathToFollow.points.Clear();
             IsFired = false;
             CannonPool.ObjectPool.Release(gameObject);
             CannonFiredEvent.Raise();

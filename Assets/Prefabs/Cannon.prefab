@@ -141,6 +141,8 @@ MonoBehaviour:
   CannonFiredEvent: {fileID: 11400000, guid: 4c27ed09b9c0e8d4a81565433a312af1, type: 2}
   LaunchAngle: {fileID: 11400000, guid: 668389899d73f2a4cb85684f440811fa, type: 2}
   InitialVelocity: {fileID: 11400000, guid: 4b08e33f96b90fc4a8612747f2a56585, type: 2}
+  PathToFollow: {fileID: 11400000, guid: 0f9c61e320388ad4ea4beb5a7b5e619d, type: 2}
+  isFiringCannon: {fileID: 11400000, guid: 7f661ff35f9df174ab07a26608762cfa, type: 2}
 --- !u!50 &4169138542130032261
 Rigidbody2D:
   serializedVersion: 4
@@ -156,7 +158,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
