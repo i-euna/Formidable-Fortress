@@ -17,14 +17,10 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField]
     private GameEventWithStr EnemyDeathEvent;
 
-    [SerializeField]
-    private IntVariable Score;
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag != "Ground")
         {
-            Score.Value++;
             EnemyKilledEvent.Raise();
             EnemyDeathEvent.InvokeEvent(Type.ToString());
             EnemyPool.ObjectPool.Release(gameObject);
