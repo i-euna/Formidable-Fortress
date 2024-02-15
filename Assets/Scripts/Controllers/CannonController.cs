@@ -17,12 +17,18 @@ public class CannonController : MonoBehaviour
     [SerializeField]
     private IntVariable MaxNoOfCannon;
 
+    [SerializeField]
+    private IntVariable AmmoCount;
+
     private Vector3 InitialPos;
     private Quaternion InitialRot;
     private Vector3 CannonParentPos;
     private Quaternion CannonParentRot;
 
     public GameObject CannonParent;
+
+    [SerializeField]
+    private GameEvent CheckGameOverEvent;
 
 
     void Start()
@@ -49,18 +55,24 @@ public class CannonController : MonoBehaviour
     }
 
     public void PrepareNextCannon() {
-        GameObject newCannon = Instantiate(CannonPrefab);
+        if (AmmoCount.Value != 0)
+        {
+            GameObject newCannon = Instantiate(CannonPrefab);
 
-        //CannonPool.ObjectPool.Get();
+            //CannonPool.ObjectPool.Get();
 
-        newCannon.transform.position = InitialPos;
-        newCannon.transform.rotation = Quaternion.identity;
-        //newCannon.GetComponent<Rigidbody2D>().centerOfMass =
-          //  CannonPrefab.GetComponent<Rigidbody2D>().centerOfMass;
-        //CannonParent.transform.position = CannonParentPos;
-        //CannonParent.transform.rotation = Quaternion.identity;
+            newCannon.transform.position = InitialPos;
+            newCannon.transform.rotation = Quaternion.identity;
+            //newCannon.GetComponent<Rigidbody2D>().centerOfMass =
+            //  CannonPrefab.GetComponent<Rigidbody2D>().centerOfMass;
+            //CannonParent.transform.position = CannonParentPos;
+            //CannonParent.transform.rotation = Quaternion.identity;
 
-        //newCannon.transform.parent = CannonParent.transform;
-        newCannon.SetActive(true);
+            //newCannon.transform.parent = CannonParent.transform;
+            newCannon.SetActive(true);
+        }
+        else {
+            CheckGameOverEvent.Raise();
+        }
     }
 }

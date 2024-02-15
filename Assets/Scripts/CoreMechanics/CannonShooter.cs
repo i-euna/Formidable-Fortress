@@ -16,7 +16,7 @@ public class CannonShooter : MonoBehaviour
     private Vector3Variable MouseTapPos;
 
     [SerializeField]
-    private GameEvent CannonFiredEvent;
+    private GameEvent CannonMissEvent;
 
     private bool IsFired;
 
@@ -101,7 +101,11 @@ public class CannonShooter : MonoBehaviour
             Path.Clear();
             PathToFollow.points.Clear();
             IsFired = false;
-            CannonFiredEvent.Raise();
+
+
+            if (other.gameObject.tag == "Ground") {
+                CannonMissEvent.Raise();
+            }
 
             /*
              * Destroying the GO temporarily,

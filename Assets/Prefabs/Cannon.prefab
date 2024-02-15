@@ -138,7 +138,7 @@ MonoBehaviour:
   CannonPool: {fileID: 11400000, guid: 036acbc17b0891f46bc6d6f6d45b31e0, type: 2}
   CannonSpeed: {fileID: 11400000, guid: 83d388cf3581ca04aabde28ce898d77b, type: 2}
   MouseTapPos: {fileID: 11400000, guid: fdfdd6e011b1bfe4493464813377bb60, type: 2}
-  CannonFiredEvent: {fileID: 11400000, guid: 4c27ed09b9c0e8d4a81565433a312af1, type: 2}
+  CannonMissEvent: {fileID: 11400000, guid: 4c27ed09b9c0e8d4a81565433a312af1, type: 2}
   LaunchAngle: {fileID: 11400000, guid: 668389899d73f2a4cb85684f440811fa, type: 2}
   InitialVelocity: {fileID: 11400000, guid: 4b08e33f96b90fc4a8612747f2a56585, type: 2}
   PathToFollow: {fileID: 11400000, guid: 0f9c61e320388ad4ea4beb5a7b5e619d, type: 2}

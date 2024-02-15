@@ -11,7 +11,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private IntVariable AmmoCount;
     public void CheckGameOver() {
-        if (Health.Value == 0) {
+
+        //if all enemies are killed/destroyed
+        //level success
+
+        if (Health.Value == 0 || AmmoCount.Value <= 0) {
             HandleLevelFailure();
         }
     }

@@ -706,7 +706,9 @@ MonoBehaviour:
   CannonPool: {fileID: 11400000, guid: 036acbc17b0891f46bc6d6f6d45b31e0, type: 2}
   CannonPrefab: {fileID: 3370032792691091295, guid: b5ae157e6a7c65e40ae78c22d7de2e62, type: 3}
   MaxNoOfCannon: {fileID: 11400000, guid: 26c56772f2a981b45aaeab8a6ce77034, type: 2}
+  AmmoCount: {fileID: 11400000, guid: cbe1446975a116f4bacea340a404ae49, type: 2}
   CannonParent: {fileID: 922373703}
+  CheckGameOverEvent: {fileID: 11400000, guid: cb232a04aa7781d449a0fbaee93a369b, type: 2}
 --- !u!114 &502148914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,7 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2611b2ea4507a124e8427facf9e4ae7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 4c27ed09b9c0e8d4a81565433a312af1, type: 2}
+  Event: {fileID: 11400000, guid: de0e6ea41b6e6514a8c58abc1e3e3da5, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -1857,6 +1859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AmmoCount: {fileID: 11400000, guid: cbe1446975a116f4bacea340a404ae49, type: 2}
   TextComponent: {fileID: 1775138137}
+  PrepareCannonEvent: {fileID: 11400000, guid: de0e6ea41b6e6514a8c58abc1e3e3da5, type: 2}
 --- !u!114 &2095669923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1869,7 +1872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2611b2ea4507a124e8427facf9e4ae7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: c3493cec3364fc5458a900ce5ce5ca13, type: 2}
+  Event: {fileID: 11400000, guid: 4c27ed09b9c0e8d4a81565433a312af1, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
