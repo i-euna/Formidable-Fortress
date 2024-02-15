@@ -20,10 +20,14 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField]
     private GameEventWithStr EnemyDeathEvent;
 
+    [SerializeField]
+    private IntVariable TotalKilledEnemy;
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag != "Ground")
         {
+            TotalKilledEnemy.Value++;
             if (other.gameObject.tag == "Castle")
             {
                 CastleBreachedEvent.Raise();

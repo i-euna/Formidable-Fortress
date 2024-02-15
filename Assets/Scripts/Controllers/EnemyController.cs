@@ -28,6 +28,9 @@ public class EnemyController : MonoBehaviour
     private FloatVariable EnemyRepeatRate;
 
     [SerializeField]
+    private IntVariable TotalSpawnedEnemy, TotalKilledEnemy;
+
+    [SerializeField]
     private float MinSpawnInterval;
 
     [SerializeField]
@@ -51,6 +54,10 @@ public class EnemyController : MonoBehaviour
         MaxNoOfEnemies.Value
         );
         InitialPos = WalkerEnemyPrefab.transform.position;
+
+        TotalKilledEnemy.Value = 0;
+        TotalSpawnedEnemy.Value = 0;
+
         StartSendingEnemies();
         //InvokeRepeating("SendEnemy", InitialWaitTime.Value, EnemyRepeatRate.Value);
     }
@@ -72,6 +79,7 @@ public class EnemyController : MonoBehaviour
                     break;
             }
         }
+        UpdateTotalSpawnedCount();
     }
 
     void SpawnWalkerWithDelay()
@@ -96,5 +104,9 @@ public class EnemyController : MonoBehaviour
         SpawnedWalkerCount++;
 
         SpawnWalkerWithDelay();
+    }
+
+    void UpdateTotalSpawnedCount() {
+        TotalSpawnedEnemy.Value = MaxWalkerCount;
     }
 }
