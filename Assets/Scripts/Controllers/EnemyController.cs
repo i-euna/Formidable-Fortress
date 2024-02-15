@@ -1,16 +1,17 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class EnemyController : MonoBehaviour
 {
-    [Tooltip("Enemy pool")]
+    [Tooltip("Walker Enemy pool")]
     [SerializeField]
-    private ObjectPoolVariable EnemyPool;
+    private ObjectPoolVariable WalkerEnemyPool;
 
     [Tooltip("Original Enemy")]
     [SerializeField]
-    private GameObject EnemyPrefab;
+    private GameObject WalkerEnemyPrefab;
     //List of enemies
     private Stack FiredEnemies;
 
@@ -26,15 +27,22 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private FloatVariable EnemyRepeatRate;
 
+    [SerializeField]
+    private float MinSpawnInterval;
+
+    [SerializeField]
+    private float MaxSpawnInterval;
+
     private Vector3 InitialPos;
+    private int SpawnedWalkerCount, MaxWalkerCount;
 
     private void Start()
     {
         InitialPos = transform.position;
 
         //Initialize the pool
-        EnemyPool.ObjectPool = new ObjectPool<GameObject>(() =>
-        { return Instantiate(EnemyPrefab); },
+        WalkerEnemyPool.ObjectPool = new ObjectPool<GameObject>(() =>
+        { return Instantiate(WalkerEnemyPrefab); },
         enemy => { enemy.SetActive(true); },
         enemy => { enemy.SetActive(false); },
         enemy => { Destroy(enemy); },
@@ -42,16 +50,51 @@ public class EnemyController : MonoBehaviour
         MaxNoOfEnemies.Value,
         MaxNoOfEnemies.Value
         );
-        InitialPos = EnemyPrefab.transform.position;
-
-        InvokeRepeating("SendEnemy", InitialWaitTime.Value, EnemyRepeatRate.Value);
+        InitialPos = WalkerEnemyPrefab.transform.position;
+        StartSendingEnemies();
+        //InvokeRepeating("SendEnemy", InitialWaitTime.Value, EnemyRepeatRate.Value);
     }
 
-    private void SendEnemy() {
-        GameObject newEnemy = EnemyPool.ObjectPool.Get();
+    void StartSendingEnemies() {
+        Dictionary<EnemyType, int> req = EnemyWaveSettings.LevelRequirement[1];
 
+        foreach (KeyValuePair<EnemyType, int> r in req)
+        {
+            switch (r.Key) {
+                case EnemyType.WALKER:
+                    SpawnedWalkerCount = 0;
+                    MaxWalkerCount = r.Value;
+                    SpawnWalkerWithDelay();
+                    break;
+                case EnemyType.FLOATING:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    void SpawnWalkerWithDelay()
+    {
+        if (SpawnedWalkerCount >= MaxWalkerCount)
+        {
+            Debug.Log("Nothing more to spawn");
+            return;
+        }
+
+        float spawnDelay = Random.Range(MinSpawnInterval, MaxSpawnInterval);
+
+        Invoke("SpawnWalker", spawnDelay);
+    }
+
+    void SpawnWalker()
+    {
+        GameObject newEnemy = WalkerEnemyPool.ObjectPool.Get();
         newEnemy.transform.position = InitialPos;
-
         newEnemy.SetActive(true);
+
+        SpawnedWalkerCount++;
+
+        SpawnWalkerWithDelay();
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8903835541098532204}
   - component: {fileID: 9123043000839120104}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: WalkerEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -201,11 +201,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5399f2c73c422374b94fb1ac0604e436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPool: {fileID: 11400000, guid: 0e3bc62ecc565134e83f245ee2c182b8, type: 2}
-  EnemyPrefab: {fileID: 1927905966}
+  WalkerEnemyPool: {fileID: 11400000, guid: 0e3bc62ecc565134e83f245ee2c182b8, type: 2}
+  WalkerEnemyPrefab: {fileID: 1927905966}
   MaxNoOfEnemies: {fileID: 11400000, guid: 5042ae44b3fbfd148bd40f635127ce84, type: 2}
   InitialWaitTime: {fileID: 11400000, guid: c592cbd635a2a7d43848f80bfb632566, type: 2}
   EnemyRepeatRate: {fileID: 11400000, guid: d65517b5ef3c8904c85af02208cad22e, type: 2}
+  MinSpawnInterval: 3
+  MaxSpawnInterval: 8
 --- !u!1 &391211612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,8 +1461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ad28b4f20ccc64da7b126c75085b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalLevels: 5
-  EnemyDeathEvent: {fileID: 11400000, guid: 4e870b9876ea3694b9ef82814ac8a0c6, type: 2}
 --- !u!1 &1706782747
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,7 +2038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009810750117976898, guid: 5c2de2ee18a16204f9d348cc0f7681c5, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: WalkerEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 7009810750117976898, guid: 5c2de2ee18a16204f9d348cc0f7681c5, type: 3}
       propertyPath: m_IsActive
