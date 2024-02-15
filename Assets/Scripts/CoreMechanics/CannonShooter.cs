@@ -102,6 +102,11 @@ public class CannonShooter : MonoBehaviour
             PathToFollow.points.Clear();
             IsFired = false;
             CannonFiredEvent.Raise();
+
+            /*
+             * Destroying the GO temporarily,
+             * have to release to pool
+             */
             //gameObject.SetActive(false);
             //CannonPool.ObjectPool.Release(gameObject);
             Destroy(gameObject);

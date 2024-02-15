@@ -51,7 +51,6 @@ public class LevelPregressionController : MonoBehaviour
         bool gameOver = true;
         foreach (KeyValuePair<EnemyType, int> r in req)
         {
-            Debug.Log("Game Over Test " + r.Key + " " + r.Value);
             if (KillCount[r.Key] != r.Value) {
                 gameOver = false;
                 break;

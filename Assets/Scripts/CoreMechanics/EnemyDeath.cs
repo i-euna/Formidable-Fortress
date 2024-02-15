@@ -15,14 +15,23 @@ public class EnemyDeath : MonoBehaviour
     private GameEvent EnemyKilledEvent;
 
     [SerializeField]
+    private GameEvent CastleBreachedEvent;
+
+    [SerializeField]
     private GameEventWithStr EnemyDeathEvent;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag != "Ground")
         {
-            EnemyKilledEvent.Raise();
-            EnemyDeathEvent.InvokeEvent(Type.ToString());
+            if (other.gameObject.tag == "Castle")
+            {
+                CastleBreachedEvent.Raise();
+            }
+            else {
+                EnemyKilledEvent.Raise();
+                EnemyDeathEvent.InvokeEvent(Type.ToString());
+            }
             EnemyPool.ObjectPool.Release(gameObject);
         }
     }

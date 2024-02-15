@@ -13,15 +13,20 @@ public class AmmoManager : MonoBehaviour
     void Start()
     {
         AmmoCount.Value = 3;
+        UpdateAmmoText();
     }
 
     public void DecreaseAmmo() {
         AmmoCount.Value--;
-        TextComponent.text = "Ammo: " + AmmoCount.Value;
+        UpdateAmmoText();
     }
 
     public void IncreaseAmmo() {
         AmmoCount.Value++;
+        UpdateAmmoText();
+    }
+
+    void UpdateAmmoText() {
         TextComponent.text = "Ammo: " + AmmoCount.Value;
     }
 }
