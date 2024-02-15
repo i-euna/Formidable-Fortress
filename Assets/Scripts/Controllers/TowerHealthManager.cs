@@ -9,6 +9,9 @@ public class TowerHealthManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI TextComponent;
 
+    [SerializeField]
+    private GameEvent CheckGameOver;
+
     private void Start()
     {
         Health.Value = 100;
@@ -18,6 +21,9 @@ public class TowerHealthManager : MonoBehaviour
     public void DecreaseHealth() {
         Health.Value -= 10;
         UpdateHealth();
+
+        if (Health.Value <= 0)
+            CheckGameOver.Raise();
     }
 
     void UpdateHealth() {

@@ -1269,6 +1269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: {fileID: 11400000, guid: 547bb7acf927cec448512e15facb4c3a, type: 2}
   TextComponent: {fileID: 762854692}
+  CheckGameOver: {fileID: 11400000, guid: cb232a04aa7781d449a0fbaee93a369b, type: 2}
 --- !u!4 &1283028932
 Transform:
   m_ObjectHideFlags: 0
@@ -1453,7 +1454,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407170549}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60ad28b4f20ccc64da7b126c75085b63, type: 3}
   m_Name: 
@@ -1912,6 +1913,81 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &2127959631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2127959632}
+  - component: {fileID: 2127959633}
+  - component: {fileID: 2127959634}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2127959632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127959631}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.6516685, y: -2.8429523, z: 0.10147984}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2127959633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127959631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4c1527a7c3b26458271582cbda7827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 11400000, guid: 547bb7acf927cec448512e15facb4c3a, type: 2}
+  AmmoCount: {fileID: 11400000, guid: cbe1446975a116f4bacea340a404ae49, type: 2}
+--- !u!114 &2127959634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127959631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2611b2ea4507a124e8427facf9e4ae7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: cb232a04aa7781d449a0fbaee93a369b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2127959633}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: CheckGameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1675787604350754045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2081,3 +2157,4 @@ SceneRoots:
   - {fileID: 1407170550}
   - {fileID: 2095669921}
   - {fileID: 1283028932}
+  - {fileID: 2127959632}
