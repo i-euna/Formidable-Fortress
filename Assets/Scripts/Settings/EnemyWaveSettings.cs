@@ -4,17 +4,23 @@ using UnityEngine;
 
 public static class EnemyWaveSettings
 {
-    public static readonly Dictionary<int, Dictionary<EnemyType, int>>
+    public static readonly Dictionary<Levels, Dictionary<EnemyType, int>>
         LevelRequirement;
 
     static EnemyWaveSettings()
     {
-        LevelRequirement = new Dictionary<int, Dictionary<EnemyType, int>>();
+        LevelRequirement = new Dictionary<Levels, Dictionary<EnemyType, int>>();
 
-        LevelRequirement[1] = new Dictionary<EnemyType, int>
+        LevelRequirement[Levels.Level0] = new Dictionary<EnemyType, int>
         {
             { EnemyType.WALKER, 10 }//,
             //{ EnemyType.FLOATING, 3 }
+        };
+
+        LevelRequirement[Levels.Level1] = new Dictionary<EnemyType, int>
+        {
+            { EnemyType.WALKER, 6 },
+            { EnemyType.HIGH_SPEED_WALKER, 4 }
         };
     }
 }

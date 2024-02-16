@@ -63,7 +63,7 @@ public class EnemyController : MonoBehaviour
     }
 
     void StartSendingEnemies() {
-        Dictionary<EnemyType, int> req = EnemyWaveSettings.LevelRequirement[1];
+        Dictionary<EnemyType, int> req = EnemyWaveSettings.LevelRequirement[LevelManager.CurrentLevel];
 
         foreach (KeyValuePair<EnemyType, int> r in req)
         {
@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour
                     MaxWalkerCount = r.Value;
                     SpawnWalkerWithDelay();
                     break;
-                case EnemyType.FLOATING:
+                case EnemyType.HIGH_SPEED_WALKER:
                     break;
                 default:
                     break;

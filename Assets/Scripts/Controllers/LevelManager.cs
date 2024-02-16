@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
     private GameObject LevelFailurePanel;
 
     [SerializeField]
-    private Levels CurrentLevel;
+    public static Levels CurrentLevel;
     [SerializeField]
     private Levels NextLevel;
     public void CheckGameOver() {

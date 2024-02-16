@@ -4,5 +4,6 @@ using UnityEngine;
 
 public enum EnemyType { 
    WALKER,
+   HIGH_SPEED_WALKER,
    FLOATING
 }
