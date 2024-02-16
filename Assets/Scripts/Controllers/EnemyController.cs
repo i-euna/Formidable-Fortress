@@ -64,9 +64,13 @@ public class EnemyController : MonoBehaviour
     }
 
     void StartSendingEnemies() {
-        Dictionary<EnemyType, int> req = EnemyWaveSettings.LevelRequirement[LevelManager.CurrentLevel];
+        Dictionary<EnemyType, int> req = EnemyWaveSettings.LevelRequirement[LevelManager.GetCurrentLevel()];
+        //Debug.Log("Current Level " + LevelManager.CurrentLevel);
         TotalSpawnedEnemy.Value = 0;
+        int segmentLength = 3;
 
+        List<float> spawnIntervals = new List<float>();
+        List<EnemyType> enemyTypes = new List<EnemyType>();
         //calculating total enemies to be spawned
         foreach (KeyValuePair<EnemyType, int> r in req)
         {
@@ -75,22 +79,31 @@ public class EnemyController : MonoBehaviour
                     SpawnedWalkerCount = 0;
                     WalkerCount = r.Value;
                     TotalSpawnedEnemy.Value += WalkerCount;
+                    ListManipulator.AddMultipleTimes(
+                            enemyTypes, 
+                            EnemyType.WALKER, 
+                            r.Value
+                        );
                     //SpawnWalkerWithDelay();
                     break;
                 case EnemyType.HIGH_SPEED_WALKER:
                     HighSpeedWalkerCount = r.Value;
                     TotalSpawnedEnemy.Value += HighSpeedWalkerCount;
+
+                    ListManipulator
+                        .AddMultipleTimes(
+                            enemyTypes, 
+                            EnemyType.HIGH_SPEED_WALKER, 
+                            r.Value
+                        );
                     break;
                 default:
                     break;
             }
         }
+        enemyTypes = ListManipulator.ShuffleList(enemyTypes);
 
-        int segmentLength = 3;
-        int totalTimeNeeded = TotalSpawnedEnemy.Value * segmentLength;
-
-        List<float> spawnIntervals = new List<float>();
-        List<EnemyType> enemyTypes = new List<EnemyType>();
+        //prepare spawn intervals
         spawnIntervals.Add(0);
         //calculate spawn points in time
         for (int i = 1; i < TotalSpawnedEnemy.Value; i++) {
@@ -98,13 +111,14 @@ public class EnemyController : MonoBehaviour
             spawnIntervals.Add(spawnDelay);
         }
 
-        Array enemyTypeValues = Enum.GetValues(typeof(EnemyType));
-        enemyTypes.Add((EnemyType)enemyTypeValues.GetValue(0));
-
-        for (int i = 1; i < TotalSpawnedEnemy.Value; i++)
-        {
-
+        for (int i = 0; i < TotalSpawnedEnemy.Value; i++) {
+            Debug.Log("enemy type " + enemyTypes[i]);
         }
+        //
+        //Array enemyTypeValues = Enum.GetValues(typeof(EnemyType));
+        //enemyTypes.Add((EnemyType)enemyTypeValues.GetValue(0));
+
+
 }
 
     //void SpawnWalkerWithDelay()
@@ -134,4 +148,5 @@ public class EnemyController : MonoBehaviour
     //void UpdateTotalSpawnedCount() {
     //    TotalSpawnedEnemy.Value = WalkerCount;
     //}
+
 }

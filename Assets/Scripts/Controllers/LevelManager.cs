@@ -18,9 +18,18 @@ public class LevelManager : MonoBehaviour
     private GameObject LevelFailurePanel;
 
     [SerializeField]
-    public static Levels CurrentLevel;
+    private Levels CurrentLevel;
     [SerializeField]
     private Levels NextLevel;
+
+    private void Awake()
+    {
+        CurrentLevelSettings.CurrentLevel = CurrentLevel;
+    }
+
+    public static Levels GetCurrentLevel() {
+        return CurrentLevelSettings.CurrentLevel;
+    }
     public void CheckGameOver() {
 
         //if all enemies are killed/destroyed
