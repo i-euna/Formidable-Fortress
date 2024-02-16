@@ -13,6 +13,9 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     private IntVariable MaxSpawnedEnemy, TotalKilledEnemy;
+
+    [SerializeField]
+    private GameObject LevelFailurePanel;
     public void CheckGameOver() {
 
         //if all enemies are killed/destroyed
@@ -30,6 +33,7 @@ public class LevelManager : MonoBehaviour
 
     void HandleLevelFailure()
     {
-        SceneManager.LoadScene("LevelOver", LoadSceneMode.Single);
+        Time.timeScale = 0;
+        LevelFailurePanel.SetActive(true);
     }
 }
