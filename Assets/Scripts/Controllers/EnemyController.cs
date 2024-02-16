@@ -8,13 +8,19 @@ public class EnemyController : MonoBehaviour
 {
     [Tooltip("Walker Enemy pool")]
     [SerializeField]
-    private ObjectPoolVariable WalkerEnemyPool;
+    private ObjectPoolVariable WalkerPool;
 
-    [Tooltip("Original Enemy")]
+    [Tooltip("High Speed Walker Enemy pool")]
+    [SerializeField]
+    private ObjectPoolVariable HighSpeedWalkerPool;
+
+    [Tooltip("Walker")]
     [SerializeField]
     private GameObject WalkerEnemyPrefab;
-    //List of enemies
-    private Stack FiredEnemies;
+
+    [Tooltip("High speed walker")]
+    [SerializeField]
+    private GameObject HighSpeedWalkerPrefab;
 
     [Tooltip("Max no of enemy in the pool")]
     [SerializeField]
@@ -39,13 +45,25 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 InitialPos;
     private int SpawnedWalkerCount, WalkerCount, HighSpeedWalkerCount;
-
+    List<float> spawnIntervals;
+    List<EnemyType> enemyTypes;
     private void Start()
     {
-        InitialPos = transform.position;
+        InitializeEnemyPools();
+        InitialPos = WalkerEnemyPrefab.transform.position;
 
+        TotalKilledEnemy.Value = 0;
+        TotalSpawnedEnemy.Value = 0;
+
+        PrepareEnemySequence();
+        SpawnedWalkerCount = 0;
+        SpawnWithDelay();
+        //InvokeRepeating("SendEnemy", InitialWaitTime.Value, EnemyRepeatRate.Value);
+    }
+
+    void InitializeEnemyPools() {
         //Initialize the pool
-        WalkerEnemyPool.ObjectPool = new ObjectPool<GameObject>(() =>
+        WalkerPool.ObjectPool = new ObjectPool<GameObject>(() =>
         { return Instantiate(WalkerEnemyPrefab); },
         enemy => { enemy.SetActive(true); },
         enemy => { enemy.SetActive(false); },
@@ -54,23 +72,26 @@ public class EnemyController : MonoBehaviour
         MaxNoOfEnemies.Value,
         MaxNoOfEnemies.Value
         );
-        InitialPos = WalkerEnemyPrefab.transform.position;
 
-        TotalKilledEnemy.Value = 0;
-        TotalSpawnedEnemy.Value = 0;
-
-        StartSendingEnemies();
-        //InvokeRepeating("SendEnemy", InitialWaitTime.Value, EnemyRepeatRate.Value);
+        HighSpeedWalkerPool.ObjectPool = new ObjectPool<GameObject>(() =>
+        { return Instantiate(HighSpeedWalkerPrefab); },
+        enemy => { enemy.SetActive(true); },
+        enemy => { enemy.SetActive(false); },
+        enemy => { Destroy(enemy); },
+        false,
+        MaxNoOfEnemies.Value,
+        MaxNoOfEnemies.Value
+        );
     }
 
-    void StartSendingEnemies() {
+    void PrepareEnemySequence() {
         Dictionary<EnemyType, int> req = EnemyWaveSettings.LevelRequirement[LevelManager.GetCurrentLevel()];
         //Debug.Log("Current Level " + LevelManager.CurrentLevel);
         TotalSpawnedEnemy.Value = 0;
         int segmentLength = 3;
 
-        List<float> spawnIntervals = new List<float>();
-        List<EnemyType> enemyTypes = new List<EnemyType>();
+        spawnIntervals = new List<float>();
+        enemyTypes = new List<EnemyType>();
         //calculating total enemies to be spawned
         foreach (KeyValuePair<EnemyType, int> r in req)
         {
@@ -110,40 +131,45 @@ public class EnemyController : MonoBehaviour
             float spawnDelay = UnityEngine.Random.Range(MinSpawnInterval, MaxSpawnInterval);
             spawnIntervals.Add(spawnDelay);
         }
-
-        for (int i = 0; i < TotalSpawnedEnemy.Value; i++) {
-            Debug.Log("enemy type " + enemyTypes[i]);
-        }
-        //
-        //Array enemyTypeValues = Enum.GetValues(typeof(EnemyType));
-        //enemyTypes.Add((EnemyType)enemyTypeValues.GetValue(0));
-
-
 }
 
-    //void SpawnWalkerWithDelay()
-    //{
-    //    if (SpawnedWalkerCount >= WalkerCount)
-    //    {
-    //        Debug.Log("Nothing more to spawn");
-    //        return;
-    //    }
+    void SpawnWithDelay()
+    {
+        if (SpawnedWalkerCount >= TotalSpawnedEnemy.Value)
+        {
+            Debug.Log("Nothing more to spawn");
+            return;
+        }
 
-    //    float spawnDelay = Random.Range(MinSpawnInterval, MaxSpawnInterval);
+        float spawnDelay = spawnIntervals[SpawnedWalkerCount];
 
-    //    Invoke("SpawnWalker", spawnDelay);
-    //}
+        Invoke("SpawnEnemy", spawnDelay);
+    }
 
-    //void SpawnWalker()
-    //{
-    //    GameObject newEnemy = WalkerEnemyPool.ObjectPool.Get();
-    //    newEnemy.transform.position = InitialPos;
-    //    newEnemy.SetActive(true);
+    void SpawnEnemy()
+    {
+        EnemyType enemyType = enemyTypes[SpawnedWalkerCount];
 
-    //    SpawnedWalkerCount++;
+        GameObject newEnemy;
+        switch (enemyType) {
+            case EnemyType.WALKER:
+                newEnemy = WalkerPool.ObjectPool.Get();
+                break;
+            case EnemyType.HIGH_SPEED_WALKER:
+                newEnemy = HighSpeedWalkerPool.ObjectPool.Get();
+                break;
+            default:
+                newEnemy = WalkerPool.ObjectPool.Get();
+                break;
+        }
+        
+        newEnemy.transform.position = InitialPos;
+        newEnemy.SetActive(true);
 
-    //    SpawnWalkerWithDelay();
-    //}
+        SpawnedWalkerCount++;
+
+        SpawnWithDelay();
+    }
 
     //void UpdateTotalSpawnedCount() {
     //    TotalSpawnedEnemy.Value = WalkerCount;

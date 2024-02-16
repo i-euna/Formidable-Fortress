@@ -336,8 +336,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5399f2c73c422374b94fb1ac0604e436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkerEnemyPool: {fileID: 11400000, guid: 0e3bc62ecc565134e83f245ee2c182b8, type: 2}
+  WalkerPool: {fileID: 11400000, guid: 0e3bc62ecc565134e83f245ee2c182b8, type: 2}
+  HighSpeedWalkerPool: {fileID: 11400000, guid: dd13fe120567310489c6c73ae0a0cd14, type: 2}
   WalkerEnemyPrefab: {fileID: 1927905966}
+  HighSpeedWalkerPrefab: {fileID: 2005642460}
   MaxNoOfEnemies: {fileID: 11400000, guid: 5042ae44b3fbfd148bd40f635127ce84, type: 2}
   InitialWaitTime: {fileID: 11400000, guid: c592cbd635a2a7d43848f80bfb632566, type: 2}
   EnemyRepeatRate: {fileID: 11400000, guid: d65517b5ef3c8904c85af02208cad22e, type: 2}
@@ -2135,6 +2137,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5519997353928943234, guid: 5c2de2ee18a16204f9d348cc0f7681c5, type: 3}
   m_PrefabInstance: {fileID: 1675787604350754045}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2005642460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7145474700549659879, guid: 3d32c93401d032648985c6cdb48d741b, type: 3}
+  m_PrefabInstance: {fileID: 3703036225664760887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2062734196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2450,6 +2457,7 @@ MonoBehaviour:
   TotalSpawnedEnemy: {fileID: 11400000, guid: 3c2a9584a0da08346a1d6277556d333b, type: 2}
   TotalKilledEnemy: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
   LevelFailurePanel: {fileID: 1018123589}
+  CurrentLevel: 0
   NextLevel: 1
 --- !u!114 &2127959634
 MonoBehaviour:
