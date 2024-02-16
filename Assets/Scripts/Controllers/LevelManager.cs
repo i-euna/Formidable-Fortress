@@ -16,6 +16,11 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     private GameObject LevelFailurePanel;
+
+    [SerializeField]
+    private Levels CurrentLevel;
+    [SerializeField]
+    private Levels NextLevel;
     public void CheckGameOver() {
 
         //if all enemies are killed/destroyed
@@ -24,6 +29,7 @@ public class LevelManager : MonoBehaviour
         if (MaxSpawnedEnemy.Value == TotalKilledEnemy.Value 
             && Health.Value != 0) {
             Debug.Log("Level Successful");
+            HandleSuccess();
         }
 
         if (Health.Value == 0 || AmmoCount.Value <= 0) {
@@ -35,5 +41,9 @@ public class LevelManager : MonoBehaviour
     {
         Time.timeScale = 0;
         LevelFailurePanel.SetActive(true);
+    }
+
+    void HandleSuccess() {
+        SceneController.LoadSceneWithName(NextLevel.ToString());
     }
 }
