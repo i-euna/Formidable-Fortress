@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using System;
 
 public class EnemyController : MonoBehaviour
 {
@@ -65,6 +66,8 @@ public class EnemyController : MonoBehaviour
     void StartSendingEnemies() {
         Dictionary<EnemyType, int> req = EnemyWaveSettings.LevelRequirement[LevelManager.CurrentLevel];
         TotalSpawnedEnemy.Value = 0;
+
+        //calculating total enemies to be spawned
         foreach (KeyValuePair<EnemyType, int> r in req)
         {
             switch (r.Key) {
@@ -72,7 +75,7 @@ public class EnemyController : MonoBehaviour
                     SpawnedWalkerCount = 0;
                     WalkerCount = r.Value;
                     TotalSpawnedEnemy.Value += WalkerCount;
-                    SpawnWalkerWithDelay();
+                    //SpawnWalkerWithDelay();
                     break;
                 case EnemyType.HIGH_SPEED_WALKER:
                     HighSpeedWalkerCount = r.Value;
@@ -82,33 +85,53 @@ public class EnemyController : MonoBehaviour
                     break;
             }
         }
-    }
 
-    void SpawnWalkerWithDelay()
-    {
-        if (SpawnedWalkerCount >= WalkerCount)
-        {
-            Debug.Log("Nothing more to spawn");
-            return;
+        int segmentLength = 3;
+        int totalTimeNeeded = TotalSpawnedEnemy.Value * segmentLength;
+
+        List<float> spawnIntervals = new List<float>();
+        List<EnemyType> enemyTypes = new List<EnemyType>();
+        spawnIntervals.Add(0);
+        //calculate spawn points in time
+        for (int i = 1; i < TotalSpawnedEnemy.Value; i++) {
+            float spawnDelay = UnityEngine.Random.Range(MinSpawnInterval, MaxSpawnInterval);
+            spawnIntervals.Add(spawnDelay);
         }
 
-        float spawnDelay = Random.Range(MinSpawnInterval, MaxSpawnInterval);
+        Array enemyTypeValues = Enum.GetValues(typeof(EnemyType));
+        enemyTypes.Add((EnemyType)enemyTypeValues.GetValue(0));
 
-        Invoke("SpawnWalker", spawnDelay);
-    }
+        for (int i = 1; i < TotalSpawnedEnemy.Value; i++)
+        {
 
-    void SpawnWalker()
-    {
-        GameObject newEnemy = WalkerEnemyPool.ObjectPool.Get();
-        newEnemy.transform.position = InitialPos;
-        newEnemy.SetActive(true);
+        }
+}
 
-        SpawnedWalkerCount++;
+    //void SpawnWalkerWithDelay()
+    //{
+    //    if (SpawnedWalkerCount >= WalkerCount)
+    //    {
+    //        Debug.Log("Nothing more to spawn");
+    //        return;
+    //    }
 
-        SpawnWalkerWithDelay();
-    }
+    //    float spawnDelay = Random.Range(MinSpawnInterval, MaxSpawnInterval);
 
-    void UpdateTotalSpawnedCount() {
-        TotalSpawnedEnemy.Value = WalkerCount;
-    }
+    //    Invoke("SpawnWalker", spawnDelay);
+    //}
+
+    //void SpawnWalker()
+    //{
+    //    GameObject newEnemy = WalkerEnemyPool.ObjectPool.Get();
+    //    newEnemy.transform.position = InitialPos;
+    //    newEnemy.SetActive(true);
+
+    //    SpawnedWalkerCount++;
+
+    //    SpawnWalkerWithDelay();
+    //}
+
+    //void UpdateTotalSpawnedCount() {
+    //    TotalSpawnedEnemy.Value = WalkerCount;
+    //}
 }

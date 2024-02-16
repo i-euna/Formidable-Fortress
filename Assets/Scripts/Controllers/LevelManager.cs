@@ -28,7 +28,6 @@ public class LevelManager : MonoBehaviour
         //Debug.Log("TotalKilledEnemy " + TotalKilledEnemy.Value);
         if (TotalSpawnedEnemy.Value == TotalKilledEnemy.Value 
             && Health.Value != 0) {
-            Debug.Log("Level Successful");
             HandleSuccess();
         }
 
@@ -44,6 +43,8 @@ public class LevelManager : MonoBehaviour
     }
 
     void HandleSuccess() {
+        Debug.Log(CurrentLevel + " - Successful");
+        Debug.Log("Loading Next Level " + NextLevel);
         SceneController.LoadSceneWithName(NextLevel.ToString());
     }
 }
