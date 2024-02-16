@@ -58,7 +58,6 @@ public class EnemyController : MonoBehaviour
         PrepareEnemySequence();
         SpawnedWalkerCount = 0;
         SpawnWithDelay();
-        //InvokeRepeating("SendEnemy", InitialWaitTime.Value, EnemyRepeatRate.Value);
     }
 
     void InitializeEnemyPools() {
@@ -86,9 +85,7 @@ public class EnemyController : MonoBehaviour
 
     void PrepareEnemySequence() {
         Dictionary<EnemyType, int> req = EnemyWaveSettings.LevelRequirement[LevelManager.GetCurrentLevel()];
-        //Debug.Log("Current Level " + LevelManager.CurrentLevel);
         TotalSpawnedEnemy.Value = 0;
-        int segmentLength = 3;
 
         spawnIntervals = new List<float>();
         enemyTypes = new List<EnemyType>();
@@ -105,7 +102,6 @@ public class EnemyController : MonoBehaviour
                             EnemyType.WALKER, 
                             r.Value
                         );
-                    //SpawnWalkerWithDelay();
                     break;
                 case EnemyType.HIGH_SPEED_WALKER:
                     HighSpeedWalkerCount = r.Value;
@@ -126,7 +122,6 @@ public class EnemyController : MonoBehaviour
 
         //prepare spawn intervals
         spawnIntervals.Add(0);
-        //calculate spawn points in time
         for (int i = 1; i < TotalSpawnedEnemy.Value; i++) {
             float spawnDelay = UnityEngine.Random.Range(MinSpawnInterval, MaxSpawnInterval);
             spawnIntervals.Add(spawnDelay);
@@ -170,9 +165,5 @@ public class EnemyController : MonoBehaviour
 
         SpawnWithDelay();
     }
-
-    //void UpdateTotalSpawnedCount() {
-    //    TotalSpawnedEnemy.Value = WalkerCount;
-    //}
 
 }
