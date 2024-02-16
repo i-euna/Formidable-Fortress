@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
     private float MaxSpawnInterval;
 
     private Vector3 InitialPos;
-    private int SpawnedWalkerCount, MaxWalkerCount;
+    private int SpawnedWalkerCount, WalkerCount, HighSpeedWalkerCount;
 
     private void Start()
     {
@@ -70,10 +70,11 @@ public class EnemyController : MonoBehaviour
             switch (r.Key) {
                 case EnemyType.WALKER:
                     SpawnedWalkerCount = 0;
-                    MaxWalkerCount = r.Value;
+                    WalkerCount = r.Value;
                     SpawnWalkerWithDelay();
                     break;
                 case EnemyType.HIGH_SPEED_WALKER:
+                    HighSpeedWalkerCount = r.Value;
                     break;
                 default:
                     break;
@@ -84,7 +85,7 @@ public class EnemyController : MonoBehaviour
 
     void SpawnWalkerWithDelay()
     {
-        if (SpawnedWalkerCount >= MaxWalkerCount)
+        if (SpawnedWalkerCount >= WalkerCount)
         {
             Debug.Log("Nothing more to spawn");
             return;
@@ -107,6 +108,6 @@ public class EnemyController : MonoBehaviour
     }
 
     void UpdateTotalSpawnedCount() {
-        TotalSpawnedEnemy.Value = MaxWalkerCount;
+        TotalSpawnedEnemy.Value = WalkerCount;
     }
 }

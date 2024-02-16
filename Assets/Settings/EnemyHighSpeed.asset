@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f904563c4293716409c13e70396a9efb, type: 3}
-  m_Name: BasicEnemyPool
+  m_Script: {fileID: 11500000, guid: 4183e55a329ec11479ac35961918e524, type: 3}
+  m_Name: EnemyHighSpeed
   m_EditorClassIdentifier: 
+  Value: 5
