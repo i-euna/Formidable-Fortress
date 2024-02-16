@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     private IntVariable AmmoCount;
 
     [SerializeField]
-    private IntVariable MaxSpawnedEnemy, TotalKilledEnemy;
+    private IntVariable TotalSpawnedEnemy, TotalKilledEnemy;
 
     [SerializeField]
     private GameObject LevelFailurePanel;
@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
         //if all enemies are killed/destroyed
         //level success
         //Debug.Log("TotalKilledEnemy " + TotalKilledEnemy.Value);
-        if (MaxSpawnedEnemy.Value == TotalKilledEnemy.Value 
+        if (TotalSpawnedEnemy.Value == TotalKilledEnemy.Value 
             && Health.Value != 0) {
             Debug.Log("Level Successful");
             HandleSuccess();

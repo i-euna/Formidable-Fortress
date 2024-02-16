@@ -64,23 +64,24 @@ public class EnemyController : MonoBehaviour
 
     void StartSendingEnemies() {
         Dictionary<EnemyType, int> req = EnemyWaveSettings.LevelRequirement[LevelManager.CurrentLevel];
-
+        TotalSpawnedEnemy.Value = 0;
         foreach (KeyValuePair<EnemyType, int> r in req)
         {
             switch (r.Key) {
                 case EnemyType.WALKER:
                     SpawnedWalkerCount = 0;
                     WalkerCount = r.Value;
+                    TotalSpawnedEnemy.Value += WalkerCount;
                     SpawnWalkerWithDelay();
                     break;
                 case EnemyType.HIGH_SPEED_WALKER:
                     HighSpeedWalkerCount = r.Value;
+                    TotalSpawnedEnemy.Value += HighSpeedWalkerCount;
                     break;
                 default:
                     break;
             }
         }
-        UpdateTotalSpawnedCount();
     }
 
     void SpawnWalkerWithDelay()

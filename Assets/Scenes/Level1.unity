@@ -2446,9 +2446,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: {fileID: 11400000, guid: 547bb7acf927cec448512e15facb4c3a, type: 2}
   AmmoCount: {fileID: 11400000, guid: cbe1446975a116f4bacea340a404ae49, type: 2}
-  MaxSpawnedEnemy: {fileID: 11400000, guid: 3c2a9584a0da08346a1d6277556d333b, type: 2}
+  TotalSpawnedEnemy: {fileID: 11400000, guid: 3c2a9584a0da08346a1d6277556d333b, type: 2}
   TotalKilledEnemy: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
   LevelFailurePanel: {fileID: 1018123589}
+  NextLevel: 0
 --- !u!114 &2127959634
 MonoBehaviour:
   m_ObjectHideFlags: 0
