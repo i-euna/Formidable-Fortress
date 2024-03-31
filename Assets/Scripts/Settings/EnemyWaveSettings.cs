@@ -21,5 +21,12 @@ public static class EnemyWaveSettings
             { EnemyType.SLOW_SPEED_WALKER, 5 },
             { EnemyType.MEDIUM_SPEED_WALKER, 3 }
         };
+
+        LevelRequirement[Levels.Level2] = new Dictionary<EnemyType, int>
+        {
+            { EnemyType.MEDIUM_SPEED_WALKER, 6 },
+            { EnemyType.HIGH_SPEED_WALKER, 3 },
+            { EnemyType.SLOW_AIR, 3 }
+        };
     }
 }

@@ -6,5 +6,5 @@ public enum EnemyType {
    SLOW_SPEED_WALKER,
    MEDIUM_SPEED_WALKER,
    HIGH_SPEED_WALKER,
-   FLOATING
+   SLOW_AIR
 }

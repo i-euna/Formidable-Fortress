@@ -336,9 +336,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkerPool: {fileID: 11400000, guid: 0e3bc62ecc565134e83f245ee2c182b8, type: 2}
+  AirEnemyPool: {fileID: 11400000, guid: 6b36768f15750fa4d9d1ce4faf0b1515, type: 2}
   MediumSpeedWalkerPool: {fileID: 11400000, guid: d11bb5bc207cb704f86cdddc1340d277, type: 2}
   HighSpeedWalkerPool: {fileID: 11400000, guid: dd13fe120567310489c6c73ae0a0cd14, type: 2}
   WalkerEnemyPrefab: {fileID: 1927905966}
+  AirEnemyPrefab: {fileID: 411277226079468665, guid: 0078281f43d1e6647905d4ba0386814e, type: 3}
   MediumSpeedWalkerPrefab: {fileID: 7009810750117976898, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
   HighSpeedWalkerPrefab: {fileID: 7145474700549659879, guid: 3d32c93401d032648985c6cdb48d741b, type: 3}
   MaxNoOfEnemies: {fileID: 11400000, guid: 5042ae44b3fbfd148bd40f635127ce84, type: 2}
@@ -2454,7 +2456,7 @@ MonoBehaviour:
   TotalKilledEnemy: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
   LevelFailurePanel: {fileID: 1018123589}
   CurrentLevel: 1
-  NextLevel: 0
+  NextLevel: 2
 --- !u!114 &2127959634
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private ObjectPoolVariable WalkerPool;
 
+    [Tooltip("Air Enemy pool")]
+    [SerializeField]
+    private ObjectPoolVariable AirEnemyPool;
+
     [Tooltip("Medium Speed Walker Enemy pool")]
     [SerializeField]
     private ObjectPoolVariable MediumSpeedWalkerPool;
@@ -21,6 +25,10 @@ public class EnemyController : MonoBehaviour
     [Tooltip("Walker")]
     [SerializeField]
     private GameObject WalkerEnemyPrefab;
+
+    [Tooltip("Air")]
+    [SerializeField]
+    private GameObject AirEnemyPrefab;
 
     [Tooltip("Medium speed walker")]
     [SerializeField]
@@ -53,6 +61,7 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 InitialPos;
     private int SpawnedWalkerCount, SlowSpeedWalkerCount, MediumSpeedWalkerCount, HighSpeedWalkerCount;
+    private int AirEnemyCount;
     List<float> spawnIntervals;
     List<EnemyType> enemyTypes;
     private void Start()
@@ -72,6 +81,16 @@ public class EnemyController : MonoBehaviour
         //Initialize the pool
         WalkerPool.ObjectPool = new ObjectPool<GameObject>(() =>
         { return Instantiate(WalkerEnemyPrefab); },
+        enemy => { enemy.SetActive(true); },
+        enemy => { enemy.SetActive(false); },
+        enemy => { Destroy(enemy); },
+        false,
+        MaxNoOfEnemies.Value,
+        MaxNoOfEnemies.Value
+        );
+
+        AirEnemyPool.ObjectPool = new ObjectPool<GameObject>(() =>
+        { return Instantiate(AirEnemyPrefab); },
         enemy => { enemy.SetActive(true); },
         enemy => { enemy.SetActive(false); },
         enemy => { Destroy(enemy); },
@@ -144,6 +163,17 @@ public class EnemyController : MonoBehaviour
                             r.Value
                         );
                     break;
+                case EnemyType.SLOW_AIR:
+                    AirEnemyCount = r.Value;
+                    TotalSpawnedEnemy.Value += AirEnemyCount;
+                    Debug.Log("Enemy Air");
+                    ListManipulator
+                        .AddMultipleTimes(
+                            enemyTypes,
+                            EnemyType.SLOW_AIR,
+                            r.Value
+                        );
+                    break;
                 default:
                     break;
             }
@@ -187,6 +217,9 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyType.HIGH_SPEED_WALKER:
                 newEnemy = HighSpeedWalkerPool.ObjectPool.Get();
+                break;
+            case EnemyType.SLOW_AIR:
+                newEnemy = AirEnemyPool.ObjectPool.Get();
                 break;
             default:
                 newEnemy = WalkerPool.ObjectPool.Get();
