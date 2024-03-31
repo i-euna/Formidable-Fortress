@@ -65,7 +65,7 @@ public class CannonShooter : MonoBehaviour
     }
     void Move()
     {
-         float speed = 5f;
+         //float speed = 5f;
         // Check if the object has reached the current point
         if (Vector2.Distance(transform.position, Path[currentPointIndex]) <= 0.1f)
         {
@@ -75,7 +75,7 @@ public class CannonShooter : MonoBehaviour
 
         // Move the object towards the current point on the path
         Vector2 direction = (Path[currentPointIndex] - (Vector2)transform.position).normalized;
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * CannonSpeed.Value * Time.deltaTime);
         //    Vector3 TargetPosition = Camera.main.ScreenToWorldPoint(MouseTapPos.Value);
         //    TargetPosition.z = transform.position.z;
         //    transform.position = Vector3.SmoothDamp(transform.position, TargetPosition, ref velocity, 0.5f);
