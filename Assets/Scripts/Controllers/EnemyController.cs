@@ -59,7 +59,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float MaxSpawnInterval;
 
-    private Vector3 InitialPos;
+    private Vector3 InitialPosWalker, InitialPosAir;
     private int SpawnedWalkerCount, SlowSpeedWalkerCount, MediumSpeedWalkerCount, HighSpeedWalkerCount;
     private int AirEnemyCount;
     List<float> spawnIntervals;
@@ -67,7 +67,8 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         InitializeEnemyPools();
-        InitialPos = WalkerEnemyPrefab.transform.position;
+        InitialPosWalker = WalkerEnemyPrefab.transform.position;
+        InitialPosAir = AirEnemyPrefab.transform.position;
 
         TotalKilledEnemy.Value = 0;
         TotalSpawnedEnemy.Value = 0;
@@ -211,22 +212,27 @@ public class EnemyController : MonoBehaviour
         switch (enemyType) {
             case EnemyType.SLOW_SPEED_WALKER:
                 newEnemy = WalkerPool.ObjectPool.Get();
+                newEnemy.transform.position = InitialPosWalker;
                 break;
             case EnemyType.MEDIUM_SPEED_WALKER:
                 newEnemy = MediumSpeedWalkerPool.ObjectPool.Get();
+                newEnemy.transform.position = InitialPosWalker;
                 break;
             case EnemyType.HIGH_SPEED_WALKER:
                 newEnemy = HighSpeedWalkerPool.ObjectPool.Get();
+                newEnemy.transform.position = InitialPosWalker;
                 break;
             case EnemyType.SLOW_AIR:
                 newEnemy = AirEnemyPool.ObjectPool.Get();
+                newEnemy.transform.position = InitialPosAir;
                 break;
             default:
                 newEnemy = WalkerPool.ObjectPool.Get();
+                newEnemy.transform.position = InitialPosWalker;
                 break;
         }
         
-        newEnemy.transform.position = InitialPos;
+        
         newEnemy.SetActive(true);
 
         SpawnedWalkerCount++;
