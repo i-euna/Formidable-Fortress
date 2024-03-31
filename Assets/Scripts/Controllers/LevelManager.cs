@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
 
         //if all enemies are killed/destroyed
         //level success
-        //Debug.Log("TotalKilledEnemy " + TotalKilledEnemy.Value);
+        Debug.Log("TotalKilledEnemy " + TotalKilledEnemy.Value);
         if (TotalSpawnedEnemy.Value == TotalKilledEnemy.Value 
             && Health.Value != 0) {
             HandleSuccess();

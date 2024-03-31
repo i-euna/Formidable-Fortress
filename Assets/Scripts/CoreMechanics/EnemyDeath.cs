@@ -25,7 +25,8 @@ public class EnemyDeath : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag != "Ground")
+        if (other.gameObject.tag != "Ground" &&
+            other.gameObject.tag != "Enemy")
         {
             TotalKilledEnemy.Value++;
             if (other.gameObject.tag == "Castle")

@@ -336,16 +336,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkerPool: {fileID: 11400000, guid: 0e3bc62ecc565134e83f245ee2c182b8, type: 2}
+  MediumSpeedWalkerPool: {fileID: 11400000, guid: d11bb5bc207cb704f86cdddc1340d277, type: 2}
   HighSpeedWalkerPool: {fileID: 11400000, guid: dd13fe120567310489c6c73ae0a0cd14, type: 2}
   WalkerEnemyPrefab: {fileID: 1927905966}
+  MediumSpeedWalkerPrefab: {fileID: 7009810750117976898, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
   HighSpeedWalkerPrefab: {fileID: 7145474700549659879, guid: 3d32c93401d032648985c6cdb48d741b, type: 3}
   MaxNoOfEnemies: {fileID: 11400000, guid: 5042ae44b3fbfd148bd40f635127ce84, type: 2}
   InitialWaitTime: {fileID: 11400000, guid: c592cbd635a2a7d43848f80bfb632566, type: 2}
   EnemyRepeatRate: {fileID: 11400000, guid: d65517b5ef3c8904c85af02208cad22e, type: 2}
   TotalSpawnedEnemy: {fileID: 11400000, guid: 3c2a9584a0da08346a1d6277556d333b, type: 2}
   TotalKilledEnemy: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
-  MinSpawnInterval: 3
-  MaxSpawnInterval: 8
+  MinSpawnInterval: 1
+  MaxSpawnInterval: 3
 --- !u!1 &391211612
 GameObject:
   m_ObjectHideFlags: 0

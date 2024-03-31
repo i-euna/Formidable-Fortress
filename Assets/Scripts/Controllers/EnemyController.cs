@@ -10,6 +10,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private ObjectPoolVariable WalkerPool;
 
+    [Tooltip("Medium Speed Walker Enemy pool")]
+    [SerializeField]
+    private ObjectPoolVariable MediumSpeedWalkerPool;
+
     [Tooltip("High Speed Walker Enemy pool")]
     [SerializeField]
     private ObjectPoolVariable HighSpeedWalkerPool;
@@ -17,6 +21,10 @@ public class EnemyController : MonoBehaviour
     [Tooltip("Walker")]
     [SerializeField]
     private GameObject WalkerEnemyPrefab;
+
+    [Tooltip("Medium speed walker")]
+    [SerializeField]
+    private GameObject MediumSpeedWalkerPrefab;
 
     [Tooltip("High speed walker")]
     [SerializeField]
@@ -44,7 +52,7 @@ public class EnemyController : MonoBehaviour
     private float MaxSpawnInterval;
 
     private Vector3 InitialPos;
-    private int SpawnedWalkerCount, WalkerCount, HighSpeedWalkerCount;
+    private int SpawnedWalkerCount, SlowSpeedWalkerCount, MediumSpeedWalkerCount, HighSpeedWalkerCount;
     List<float> spawnIntervals;
     List<EnemyType> enemyTypes;
     private void Start()
@@ -64,6 +72,17 @@ public class EnemyController : MonoBehaviour
         //Initialize the pool
         WalkerPool.ObjectPool = new ObjectPool<GameObject>(() =>
         { return Instantiate(WalkerEnemyPrefab); },
+        enemy => { enemy.SetActive(true); },
+        enemy => { enemy.SetActive(false); },
+        enemy => { Destroy(enemy); },
+        false,
+        MaxNoOfEnemies.Value,
+        MaxNoOfEnemies.Value
+        );
+
+        //Debug.Log("MediumSpeedWalkerPool " + MediumSpeedWalkerPool.ObjectPool);
+        MediumSpeedWalkerPool.ObjectPool = new ObjectPool<GameObject>(() =>
+        { return Instantiate(MediumSpeedWalkerPrefab); },
         enemy => { enemy.SetActive(true); },
         enemy => { enemy.SetActive(false); },
         enemy => { Destroy(enemy); },
@@ -93,13 +112,24 @@ public class EnemyController : MonoBehaviour
         foreach (KeyValuePair<EnemyType, int> r in req)
         {
             switch (r.Key) {
-                case EnemyType.WALKER:
+                case EnemyType.SLOW_SPEED_WALKER:
                     SpawnedWalkerCount = 0;
-                    WalkerCount = r.Value;
-                    TotalSpawnedEnemy.Value += WalkerCount;
+                    SlowSpeedWalkerCount = r.Value;
+                    TotalSpawnedEnemy.Value += SlowSpeedWalkerCount;
                     ListManipulator.AddMultipleTimes(
                             enemyTypes, 
-                            EnemyType.WALKER, 
+                            EnemyType.SLOW_SPEED_WALKER, 
+                            r.Value
+                        );
+                    break;
+                case EnemyType.MEDIUM_SPEED_WALKER:
+                    MediumSpeedWalkerCount = r.Value;
+                    TotalSpawnedEnemy.Value += MediumSpeedWalkerCount;
+
+                    ListManipulator
+                        .AddMultipleTimes(
+                            enemyTypes,
+                            EnemyType.MEDIUM_SPEED_WALKER,
                             r.Value
                         );
                     break;
@@ -126,6 +156,8 @@ public class EnemyController : MonoBehaviour
             float spawnDelay = UnityEngine.Random.Range(MinSpawnInterval, MaxSpawnInterval);
             spawnIntervals.Add(spawnDelay);
         }
+
+        Debug.Log("total spawned enemy " + TotalSpawnedEnemy.Value);
 }
 
     void SpawnWithDelay()
@@ -137,7 +169,7 @@ public class EnemyController : MonoBehaviour
         }
 
         float spawnDelay = spawnIntervals[SpawnedWalkerCount];
-
+        Debug.Log(" spawnDelay " + spawnDelay);
         Invoke("SpawnEnemy", spawnDelay);
     }
 
@@ -147,8 +179,11 @@ public class EnemyController : MonoBehaviour
 
         GameObject newEnemy;
         switch (enemyType) {
-            case EnemyType.WALKER:
+            case EnemyType.SLOW_SPEED_WALKER:
                 newEnemy = WalkerPool.ObjectPool.Get();
+                break;
+            case EnemyType.MEDIUM_SPEED_WALKER:
+                newEnemy = MediumSpeedWalkerPool.ObjectPool.Get();
                 break;
             case EnemyType.HIGH_SPEED_WALKER:
                 newEnemy = HighSpeedWalkerPool.ObjectPool.Get();

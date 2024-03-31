@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum EnemyType { 
-   WALKER,
+   SLOW_SPEED_WALKER,
+   MEDIUM_SPEED_WALKER,
    HIGH_SPEED_WALKER,
    FLOATING
 }

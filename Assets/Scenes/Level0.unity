@@ -322,6 +322,7 @@ Transform:
   m_Children:
   - {fileID: 1927905967}
   - {fileID: 559363692394794776}
+  - {fileID: 1163327773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &260809976
@@ -337,16 +338,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkerPool: {fileID: 11400000, guid: 0e3bc62ecc565134e83f245ee2c182b8, type: 2}
+  MediumSpeedWalkerPool: {fileID: 11400000, guid: d11bb5bc207cb704f86cdddc1340d277, type: 2}
   HighSpeedWalkerPool: {fileID: 11400000, guid: dd13fe120567310489c6c73ae0a0cd14, type: 2}
   WalkerEnemyPrefab: {fileID: 1927905966}
+  MediumSpeedWalkerPrefab: {fileID: 1163327772}
   HighSpeedWalkerPrefab: {fileID: 2005642460}
   MaxNoOfEnemies: {fileID: 11400000, guid: 5042ae44b3fbfd148bd40f635127ce84, type: 2}
   InitialWaitTime: {fileID: 11400000, guid: c592cbd635a2a7d43848f80bfb632566, type: 2}
   EnemyRepeatRate: {fileID: 11400000, guid: d65517b5ef3c8904c85af02208cad22e, type: 2}
   TotalSpawnedEnemy: {fileID: 11400000, guid: 3c2a9584a0da08346a1d6277556d333b, type: 2}
   TotalKilledEnemy: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
-  MinSpawnInterval: 3
-  MaxSpawnInterval: 5
+  MinSpawnInterval: 1
+  MaxSpawnInterval: 3.5
 --- !u!1 &391211612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,6 +1460,77 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018123589}
   m_CullTransparentMesh: 1
+--- !u!1001 &1163327771
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 260809975}
+    m_Modifications:
+    - target: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.050362147
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009810750117976898, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_Name
+      value: MediumSpeedWalker
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009810750117976898, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+--- !u!1 &1163327772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7009810750117976898, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+  m_PrefabInstance: {fileID: 1163327771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1163327773 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+  m_PrefabInstance: {fileID: 1163327771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1283028930
 GameObject:
   m_ObjectHideFlags: 0
