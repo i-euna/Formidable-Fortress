@@ -13,20 +13,33 @@ public static class EnemyWaveSettings
 
         LevelRequirement[Levels.Level0] = new Dictionary<EnemyType, int>
         {
-            { EnemyType.SLOW_SPEED_WALKER, 5 }
+            { EnemyType.SLOW_WALKER, 5 }
         };
 
         LevelRequirement[Levels.Level1] = new Dictionary<EnemyType, int>
         {
-            { EnemyType.SLOW_SPEED_WALKER, 5 },
-            { EnemyType.MEDIUM_SPEED_WALKER, 3 }
+            { EnemyType.SLOW_WALKER, 5 },
+            { EnemyType.MEDIUM_WALKER, 3 }
         };
 
         LevelRequirement[Levels.Level2] = new Dictionary<EnemyType, int>
         {
-            { EnemyType.MEDIUM_SPEED_WALKER, 6 },
-            { EnemyType.HIGH_SPEED_WALKER, 3 },
+            { EnemyType.MEDIUM_WALKER, 6 },
+            { EnemyType.FAST_WALKER, 3 },
             { EnemyType.SLOW_AIR, 3 }
+        };
+        LevelRequirement[Levels.Level3E] = new Dictionary<EnemyType, int>
+        {
+            { EnemyType.SLOW_WALKER, 3 },
+            { EnemyType.MEDIUM_WALKER, 5 },
+            { EnemyType.FAST_WALKER, 3 },
+            { EnemyType.MEDIUM_AIR, 4 }
+        };
+        LevelRequirement[Levels.Level3H] = new Dictionary<EnemyType, int>
+        {
+            { EnemyType.MEDIUM_WALKER, 3 },
+            { EnemyType.FAST_WALKER, 8 },
+            { EnemyType.FAST_AIR, 4 }
         };
     }
 }

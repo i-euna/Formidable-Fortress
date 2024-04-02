@@ -11,7 +11,7 @@ public static class LevelProgressionSettings
 
     //    LevelRequirement[1] = new Dictionary<EnemyType, int>
     //    {
-    //        { EnemyType.SLOW_SPEED_WALKER, 10 }//,
+    //        { EnemyType.SLOW_WALKER, 10 }//,
     //        //{ EnemyType.FLOATING, 3 }
     //    };
     //}

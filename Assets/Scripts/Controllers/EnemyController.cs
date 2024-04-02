@@ -132,35 +132,35 @@ public class EnemyController : MonoBehaviour
         foreach (KeyValuePair<EnemyType, int> r in req)
         {
             switch (r.Key) {
-                case EnemyType.SLOW_SPEED_WALKER:
+                case EnemyType.SLOW_WALKER:
                     SpawnedWalkerCount = 0;
                     SlowSpeedWalkerCount = r.Value;
                     TotalSpawnedEnemy.Value += SlowSpeedWalkerCount;
                     ListManipulator.AddMultipleTimes(
                             enemyTypes, 
-                            EnemyType.SLOW_SPEED_WALKER, 
+                            EnemyType.SLOW_WALKER, 
                             r.Value
                         );
                     break;
-                case EnemyType.MEDIUM_SPEED_WALKER:
+                case EnemyType.MEDIUM_WALKER:
                     MediumSpeedWalkerCount = r.Value;
                     TotalSpawnedEnemy.Value += MediumSpeedWalkerCount;
 
                     ListManipulator
                         .AddMultipleTimes(
                             enemyTypes,
-                            EnemyType.MEDIUM_SPEED_WALKER,
+                            EnemyType.MEDIUM_WALKER,
                             r.Value
                         );
                     break;
-                case EnemyType.HIGH_SPEED_WALKER:
+                case EnemyType.FAST_WALKER:
                     HighSpeedWalkerCount = r.Value;
                     TotalSpawnedEnemy.Value += HighSpeedWalkerCount;
 
                     ListManipulator
                         .AddMultipleTimes(
                             enemyTypes, 
-                            EnemyType.HIGH_SPEED_WALKER, 
+                            EnemyType.FAST_WALKER, 
                             r.Value
                         );
                     break;
@@ -210,15 +210,15 @@ public class EnemyController : MonoBehaviour
 
         GameObject newEnemy;
         switch (enemyType) {
-            case EnemyType.SLOW_SPEED_WALKER:
+            case EnemyType.SLOW_WALKER:
                 newEnemy = WalkerPool.ObjectPool.Get();
                 newEnemy.transform.position = InitialPosWalker;
                 break;
-            case EnemyType.MEDIUM_SPEED_WALKER:
+            case EnemyType.MEDIUM_WALKER:
                 newEnemy = MediumSpeedWalkerPool.ObjectPool.Get();
                 newEnemy.transform.position = InitialPosWalker;
                 break;
-            case EnemyType.HIGH_SPEED_WALKER:
+            case EnemyType.FAST_WALKER:
                 newEnemy = HighSpeedWalkerPool.ObjectPool.Get();
                 newEnemy.transform.position = InitialPosWalker;
                 break;
