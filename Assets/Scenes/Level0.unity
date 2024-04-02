@@ -352,6 +352,9 @@ MonoBehaviour:
   TotalKilledEnemy: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
   MinSpawnInterval: 1
   MaxSpawnInterval: 3.5
+  SlowAirSpeed: {fileID: 11400000, guid: c6f58c1901d21af4fb8ee7015576afd0, type: 2}
+  MediumAirSpeed: {fileID: 11400000, guid: 4fd11d65da80ee644b0533f575ee3674, type: 2}
+  FastAirSpeed: {fileID: 11400000, guid: 823d05dfa7faed146bdd508dbad1d4ae, type: 2}
 --- !u!1 &268244022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,6 +1123,7 @@ MonoBehaviour:
   AmmoCount: {fileID: 11400000, guid: cbe1446975a116f4bacea340a404ae49, type: 2}
   CannonParent: {fileID: 922373703}
   CheckGameOverEvent: {fileID: 11400000, guid: cb232a04aa7781d449a0fbaee93a369b, type: 2}
+  LevelTotalAmmo: {fileID: 11400000, guid: add5bfe65a7b568448b4882a0241c0aa, type: 2}
 --- !u!114 &502148914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3009,8 +3013,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: {fileID: 11400000, guid: 547bb7acf927cec448512e15facb4c3a, type: 2}
   AmmoCount: {fileID: 11400000, guid: cbe1446975a116f4bacea340a404ae49, type: 2}
+  GameTotalKilled: {fileID: 11400000, guid: 15b9038797352014bb9df257cc7dda7c, type: 2}
+  GameTotalAmmo: {fileID: 11400000, guid: 1114da870684bfc438890b9ff47e51d4, type: 2}
   TotalSpawnedEnemy: {fileID: 11400000, guid: 3c2a9584a0da08346a1d6277556d333b, type: 2}
   TotalKilledEnemy: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
+  LevelTotalAmmo: {fileID: 11400000, guid: add5bfe65a7b568448b4882a0241c0aa, type: 2}
   LevelFailurePanel: {fileID: 1018123589}
   LevelSuccessPanel: {fileID: 1491967901}
   CurrentLevel: 0

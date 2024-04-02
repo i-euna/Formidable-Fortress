@@ -29,7 +29,8 @@ public class CannonController : MonoBehaviour
 
     [SerializeField]
     private GameEvent CheckGameOverEvent;
-
+    [SerializeField]
+    private IntVariable LevelTotalAmmo;
 
     void Start()
     {
@@ -70,6 +71,7 @@ public class CannonController : MonoBehaviour
 
             //newCannon.transform.parent = CannonParent.transform;
             newCannon.SetActive(true);
+            LevelTotalAmmo.Value++;
         }
         else {
             CheckGameOverEvent.Raise();

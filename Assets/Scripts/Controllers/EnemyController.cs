@@ -60,16 +60,20 @@ public class EnemyController : MonoBehaviour
     private float MaxSpawnInterval;
 
     private Vector3 InitialPosWalker, InitialPosAir;
+    private Quaternion InitWalkerRotation, InitAirRotation;
     private int SpawnedWalkerCount, SlowSpeedWalkerCount, MediumSpeedWalkerCount, HighSpeedWalkerCount;
     private int AirEnemyCount;
     List<float> spawnIntervals;
     List<EnemyType> enemyTypes;
+
+    [SerializeField]
+    private FloatVariable SlowAirSpeed, MediumAirSpeed, FastAirSpeed;
     private void Start()
     {
         InitializeEnemyPools();
         InitialPosWalker = WalkerEnemyPrefab.transform.position;
         InitialPosAir = AirEnemyPrefab.transform.position;
-
+        InitAirRotation = AirEnemyPrefab.transform.rotation;
         TotalKilledEnemy.Value = 0;
         TotalSpawnedEnemy.Value = 0;
 
@@ -165,13 +169,32 @@ public class EnemyController : MonoBehaviour
                         );
                     break;
                 case EnemyType.SLOW_AIR:
-                    AirEnemyCount = r.Value;
-                    TotalSpawnedEnemy.Value += AirEnemyCount;
-                    Debug.Log("Enemy Air");
+                    int count = r.Value;
+                    TotalSpawnedEnemy.Value += count;
                     ListManipulator
                         .AddMultipleTimes(
                             enemyTypes,
                             EnemyType.SLOW_AIR,
+                            r.Value
+                        );
+                    break;
+                case EnemyType.MEDIUM_AIR:
+                    count = r.Value;
+                    TotalSpawnedEnemy.Value += count;
+                    ListManipulator
+                        .AddMultipleTimes(
+                            enemyTypes,
+                            EnemyType.MEDIUM_AIR,
+                            r.Value
+                        );
+                    break;
+                case EnemyType.FAST_AIR:
+                    count = r.Value;
+                    TotalSpawnedEnemy.Value += count;
+                    ListManipulator
+                        .AddMultipleTimes(
+                            enemyTypes,
+                            EnemyType.FAST_AIR,
                             r.Value
                         );
                     break;
@@ -195,7 +218,7 @@ public class EnemyController : MonoBehaviour
     {
         if (SpawnedWalkerCount >= TotalSpawnedEnemy.Value)
         {
-            //Debug.Log("Nothing more to spawn");
+            Debug.Log("Nothing more to spawn " + TotalSpawnedEnemy.Value);
             return;
         }
 
@@ -224,11 +247,26 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyType.SLOW_AIR:
                 newEnemy = AirEnemyPool.ObjectPool.Get();
+                newEnemy.GetComponent<EnemyMovement>().SetSpeed(SlowAirSpeed);
+                newEnemy.GetComponent<EnemyDeath>().SetType(EnemyType.SLOW_AIR);
                 newEnemy.transform.position = InitialPosAir;
+                newEnemy.transform.rotation = InitAirRotation;
+                break;
+            case EnemyType.MEDIUM_AIR:
+                newEnemy = AirEnemyPool.ObjectPool.Get();
+                newEnemy.GetComponent<EnemyMovement>().SetSpeed(MediumAirSpeed);
+                newEnemy.GetComponent<EnemyDeath>().SetType(EnemyType.MEDIUM_AIR);
+                newEnemy.GetComponent<SpriteRenderer>().color = Color.green;
+                newEnemy.transform.position = InitialPosAir;
+                newEnemy.transform.rotation = InitAirRotation;
                 break;
             default:
                 newEnemy = WalkerPool.ObjectPool.Get();
-                newEnemy.transform.position = InitialPosWalker;
+                newEnemy.GetComponent<EnemyMovement>().SetSpeed(FastAirSpeed);
+                newEnemy.GetComponent<EnemyDeath>().SetType(EnemyType.FAST_AIR);
+                newEnemy.GetComponent<SpriteRenderer>().color = Color.red;
+                newEnemy.transform.position = InitialPosAir;
+                newEnemy.transform.rotation = InitAirRotation;
                 break;
         }
         

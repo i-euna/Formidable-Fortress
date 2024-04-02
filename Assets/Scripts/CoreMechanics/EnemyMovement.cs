@@ -17,4 +17,8 @@ public class EnemyMovement : MonoBehaviour
     {
         rb.velocity = new Vector3(-Speed.Value, 0, 0);
     }
+
+    public void SetSpeed(FloatVariable speed) {
+        Speed = speed;
+    }
 }

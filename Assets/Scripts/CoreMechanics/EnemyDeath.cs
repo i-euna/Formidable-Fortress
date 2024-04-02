@@ -40,4 +40,8 @@ public class EnemyDeath : MonoBehaviour
             EnemyPool.ObjectPool.Release(gameObject);
         }
     }
+
+    public void SetType(EnemyType enemyType) {
+        Type = enemyType;
+    }
 }

@@ -12,7 +12,10 @@ public class LevelManager : MonoBehaviour
     private IntVariable AmmoCount;
 
     [SerializeField]
-    private IntVariable TotalSpawnedEnemy, TotalKilledEnemy;
+    private IntVariable GameTotalKilled, GameTotalAmmo;
+
+    [SerializeField]
+    private IntVariable TotalSpawnedEnemy, TotalKilledEnemy, LevelTotalAmmo;
 
     [SerializeField]
     private GameObject LevelFailurePanel, LevelSuccessPanel;
@@ -25,6 +28,9 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         CurrentLevelSettings.CurrentLevel = CurrentLevel;
+        LevelTotalAmmo.Value = 0;
+        TotalSpawnedEnemy.Value = 0;
+        TotalKilledEnemy.Value = 0;
     }
 
     public static Levels GetCurrentLevel() {
@@ -34,7 +40,7 @@ public class LevelManager : MonoBehaviour
 
         //if all enemies are killed/destroyed
         //level success
-        //Debug.Log("TotalKilledEnemy " + TotalKilledEnemy.Value);
+       Debug.Log("TotalKilledEnemy " + TotalKilledEnemy.Value);
         if (TotalSpawnedEnemy.Value == TotalKilledEnemy.Value 
             && Health.Value != 0) {
             HandleSuccess();
@@ -53,13 +59,36 @@ public class LevelManager : MonoBehaviour
 
     void HandleSuccess() {
         Debug.Log(CurrentLevel + " - Successful");
-        Debug.Log("Loading Next Level " + NextLevel);
-        Time.timeScale = 0;
+        //Debug.Log("Loading Next Level " + NextLevel);
+        
         LevelSuccessPanel.SetActive(true);
+
+        UpdateAmmoEnemyStat();
+        Time.timeScale = 0;
     }
 
     public void LoadNextLevel() {
+        switch (CurrentLevel) {
+            case Levels.Level2:
+                if (GameTotalKilled.Value >= 25 &&
+                    GameTotalAmmo.Value <= 30)
+                    NextLevel = Levels.Level3H;
+                else NextLevel = Levels.Level3E;
+                break;
+            default:
+                break;
+        }
+        Debug.Log("Next Level " + NextLevel.ToString());
         SceneController.LoadSceneWithName(NextLevel.ToString());
-        
+    }
+
+    void UpdateAmmoEnemyStat() {
+        if (CurrentLevel == Levels.Level0) {
+            GameTotalKilled.Value = 0;
+            GameTotalAmmo.Value = 0;
+        }
+
+        GameTotalKilled.Value += TotalKilledEnemy.Value;
+        GameTotalAmmo.Value += LevelTotalAmmo.Value;
     }
 }
