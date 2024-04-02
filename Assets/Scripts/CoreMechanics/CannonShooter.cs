@@ -103,7 +103,8 @@ public class CannonShooter : MonoBehaviour
             IsFired = false;
 
 
-            if (other.gameObject.tag == "Ground") {
+            if (other.gameObject.tag == "Ground" ||
+                other.gameObject.tag == "Castle") {
                 CannonMissEvent.Raise();
             }
 

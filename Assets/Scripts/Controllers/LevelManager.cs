@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
     private IntVariable TotalSpawnedEnemy, TotalKilledEnemy;
 
     [SerializeField]
-    private GameObject LevelFailurePanel;
+    private GameObject LevelFailurePanel, LevelSuccessPanel;
 
     [SerializeField]
     private Levels CurrentLevel;
@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
 
         //if all enemies are killed/destroyed
         //level success
-        Debug.Log("TotalKilledEnemy " + TotalKilledEnemy.Value);
+        //Debug.Log("TotalKilledEnemy " + TotalKilledEnemy.Value);
         if (TotalSpawnedEnemy.Value == TotalKilledEnemy.Value 
             && Health.Value != 0) {
             HandleSuccess();
@@ -54,6 +54,12 @@ public class LevelManager : MonoBehaviour
     void HandleSuccess() {
         Debug.Log(CurrentLevel + " - Successful");
         Debug.Log("Loading Next Level " + NextLevel);
+        Time.timeScale = 0;
+        LevelSuccessPanel.SetActive(true);
+    }
+
+    public void LoadNextLevel() {
         SceneController.LoadSceneWithName(NextLevel.ToString());
+        
     }
 }

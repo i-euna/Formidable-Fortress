@@ -188,19 +188,19 @@ public class EnemyController : MonoBehaviour
             spawnIntervals.Add(spawnDelay);
         }
 
-        Debug.Log("total spawned enemy " + TotalSpawnedEnemy.Value);
+        //Debug.Log("total spawned enemy " + TotalSpawnedEnemy.Value);
 }
 
     void SpawnWithDelay()
     {
         if (SpawnedWalkerCount >= TotalSpawnedEnemy.Value)
         {
-            Debug.Log("Nothing more to spawn");
+            //Debug.Log("Nothing more to spawn");
             return;
         }
 
         float spawnDelay = spawnIntervals[SpawnedWalkerCount];
-        Debug.Log(" spawnDelay " + spawnDelay);
+        //Debug.Log(" spawnDelay " + spawnDelay);
         Invoke("SpawnEnemy", spawnDelay);
     }
 
