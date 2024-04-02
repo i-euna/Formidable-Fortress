@@ -15,7 +15,8 @@ public class LevelManager : MonoBehaviour
     private IntVariable GameTotalKilled, GameTotalAmmo;
 
     [SerializeField]
-    private IntVariable TotalSpawnedEnemy, TotalKilledEnemy, LevelTotalAmmo;
+    private IntVariable TotalSpawnedEnemy, TotalDestroyedEnemy,
+        LevelTotalAmmo, LevelTotalKilled;
 
     [SerializeField]
     private GameObject LevelFailurePanel, LevelSuccessPanel;
@@ -30,7 +31,8 @@ public class LevelManager : MonoBehaviour
         CurrentLevelSettings.CurrentLevel = CurrentLevel;
         LevelTotalAmmo.Value = 0;
         TotalSpawnedEnemy.Value = 0;
-        TotalKilledEnemy.Value = 0;
+        TotalDestroyedEnemy.Value = 0;
+        LevelTotalKilled.Value = 0;
     }
 
     public static Levels GetCurrentLevel() {
@@ -40,8 +42,8 @@ public class LevelManager : MonoBehaviour
 
         //if all enemies are killed/destroyed
         //level success
-       Debug.Log("TotalKilledEnemy " + TotalKilledEnemy.Value);
-        if (TotalSpawnedEnemy.Value == TotalKilledEnemy.Value 
+       Debug.Log("TotalDestroyedEnemy " + TotalDestroyedEnemy.Value);
+        if (TotalSpawnedEnemy.Value == TotalDestroyedEnemy.Value 
             && Health.Value != 0) {
             HandleSuccess();
         }
@@ -88,7 +90,7 @@ public class LevelManager : MonoBehaviour
             GameTotalAmmo.Value = 0;
         }
 
-        GameTotalKilled.Value += TotalKilledEnemy.Value;
+        GameTotalKilled.Value += LevelTotalKilled.Value;
         GameTotalAmmo.Value += LevelTotalAmmo.Value;
     }
 }

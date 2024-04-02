@@ -3016,8 +3016,9 @@ MonoBehaviour:
   GameTotalKilled: {fileID: 11400000, guid: 15b9038797352014bb9df257cc7dda7c, type: 2}
   GameTotalAmmo: {fileID: 11400000, guid: 1114da870684bfc438890b9ff47e51d4, type: 2}
   TotalSpawnedEnemy: {fileID: 11400000, guid: 3c2a9584a0da08346a1d6277556d333b, type: 2}
-  TotalKilledEnemy: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
+  TotalDestroyedEnemy: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
   LevelTotalAmmo: {fileID: 11400000, guid: add5bfe65a7b568448b4882a0241c0aa, type: 2}
+  LevelTotalKilled: {fileID: 11400000, guid: e8ae5a1ed2067234b97d07fa15e4f07f, type: 2}
   LevelFailurePanel: {fileID: 1018123589}
   LevelSuccessPanel: {fileID: 1491967901}
   CurrentLevel: 0

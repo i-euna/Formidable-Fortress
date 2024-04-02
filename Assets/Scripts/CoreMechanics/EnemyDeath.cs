@@ -21,19 +21,20 @@ public class EnemyDeath : MonoBehaviour
     private GameEventWithStr EnemyDeathEvent;
 
     [SerializeField]
-    private IntVariable TotalKilledEnemy;
+    private IntVariable LevelTotalKilled, LevelTotalDestroyed;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag != "Ground" &&
             other.gameObject.tag != "Enemy")
         {
-            TotalKilledEnemy.Value++;
+            LevelTotalDestroyed.Value++;
             if (other.gameObject.tag == "Castle")
             {
                 CastleBreachedEvent.Raise();
             }
             else {
+                LevelTotalKilled.Value++;
                 EnemyKilledEvent.Raise();
                 EnemyDeathEvent.InvokeEvent(Type.ToString());
             }
