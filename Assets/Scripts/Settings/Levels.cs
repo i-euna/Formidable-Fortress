@@ -8,5 +8,8 @@ public enum Levels
     Level1,
     Level2,
     Level3E,
-    Level3H
+    Level3H,
+    Level4E,
+    Level4M,
+    Level4H
 }

@@ -41,5 +41,29 @@ public static class EnemyWaveSettings
             { EnemyType.FAST_WALKER, 8 },
             { EnemyType.FAST_AIR, 4 }
         };
+        LevelRequirement[Levels.Level4E] = new Dictionary<EnemyType, int>
+        {
+            { EnemyType.SLOW_WALKER_2SHOTS, 3 },
+            { EnemyType.MEDIUM_WALKER, 5 },
+            { EnemyType.FAST_WALKER, 4 },
+            { EnemyType.FAST_AIR, 3 },
+            { EnemyType.SLOW_WALKER_1SHOTS_UNPREDICTABLE, 5 }
+        };
+        LevelRequirement[Levels.Level4M] = new Dictionary<EnemyType, int>
+        {
+            { EnemyType.MEDIUM_WALKER_2SHOTS, 3 },
+            { EnemyType.MEDIUM_WALKER_1SHOTS_UNPREDICTABLE, 5 },
+            { EnemyType.FAST_WALKER, 5 },
+            { EnemyType.FAST_AIR, 4 },
+            { EnemyType.FAST_AIR_1SHOTS_UNPREDICTABLE, 3 }
+        };
+        LevelRequirement[Levels.Level4H] = new Dictionary<EnemyType, int>
+        {
+            { EnemyType.FAST_WALKER, 5 },
+            { EnemyType.FAST_WALKER_2SHOTS, 3 },
+            { EnemyType.FAST_WALKER_1SHOTS_UNPREDICTABLE, 5 },
+            { EnemyType.FAST_AIR, 3 },
+            { EnemyType.FAST_AIR_1SHOTS_UNPREDICTABLE, 4 },
+        };
     }
 }
