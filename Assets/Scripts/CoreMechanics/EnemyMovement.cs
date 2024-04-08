@@ -8,17 +8,62 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField]
     private FloatVariable Speed;
+
+    private bool IsPredictable;
+    private float BackAndForthDist = 5f;
+    private Vector3 originalPosition;
+    private bool movingLeft = true;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        IsPredictable = true;
+        movingLeft = true;
+        originalPosition = transform.position;
     }
 
     void FixedUpdate()
     {
+        if (IsPredictable)
+            MoveForward();
+        else MoveBackAndForth();
+    }
+
+    void MoveForward() {
         rb.velocity = new Vector3(-Speed.Value, 0, 0);
+    }
+
+    void MoveBackAndForth() {
+        if (Vector3.Distance(transform.position, originalPosition) >= BackAndForthDist)
+        {
+            // Change direction
+            movingLeft = !movingLeft;
+            originalPosition = transform.position;
+        }
+
+        // Move the enemy based on its direction
+        if (movingLeft)
+        {
+            rb.velocity = new Vector3(-Speed.Value, 0);
+        }
+        else
+        {
+            rb.velocity = new Vector3(Speed.Value, 0);
+        }
     }
 
     public void SetSpeed(FloatVariable speed) {
         Speed = speed;
+    }
+
+    public void SetMovementType(bool isPredictable) {
+        IsPredictable = isPredictable;
+    }
+
+    public void SetConfigs(FloatVariable speed, bool isPredictable) {
+        Speed = speed;
+        IsPredictable = isPredictable;
+
+        movingLeft = true;
+        originalPosition = transform.position;
     }
 }

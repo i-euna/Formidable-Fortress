@@ -23,26 +23,48 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField]
     private IntVariable LevelTotalKilled, LevelTotalDestroyed;
 
+    private int NeededShots;
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag != "Ground" &&
             other.gameObject.tag != "Enemy")
         {
-            LevelTotalDestroyed.Value++;
             if (other.gameObject.tag == "Castle")
             {
                 CastleBreachedEvent.Raise();
+                LevelTotalDestroyed.Value++;
+                EnemyPool.ObjectPool.Release(gameObject);
             }
             else {
-                LevelTotalKilled.Value++;
-                EnemyKilledEvent.Raise();
-                EnemyDeathEvent.InvokeEvent(Type.ToString());
+                if (NeededShots == 1)
+                {
+                    LevelTotalKilled.Value++;
+                    EnemyKilledEvent.Raise();
+                    EnemyDeathEvent.InvokeEvent(Type.ToString());
+                    LevelTotalDestroyed.Value++;
+                    EnemyPool.ObjectPool.Release(gameObject);
+                }
+                else
+                {
+                    EnemyKilledEvent.Raise();
+                    NeededShots--;
+                } 
+                
             }
-            EnemyPool.ObjectPool.Release(gameObject);
         }
     }
 
     public void SetType(EnemyType enemyType) {
         Type = enemyType;
+    }
+
+    public void SetNeededShots(int shotCount) {
+        NeededShots = shotCount;
+    }
+
+    public void SetConfigs(EnemyType enemyType, int shotCount) {
+        Type = enemyType;
+        NeededShots = shotCount;
     }
 }
