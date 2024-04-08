@@ -2591,7 +2591,7 @@ MonoBehaviour:
   LevelFailurePanel: {fileID: 1018123589}
   LevelSuccessPanel: {fileID: 1928559590}
   CurrentLevel: 3
-  NextLevel: 0
+  NextLevel: 5
 --- !u!114 &2127959634
 MonoBehaviour:
   m_ObjectHideFlags: 0

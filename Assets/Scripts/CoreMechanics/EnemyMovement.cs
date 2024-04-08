@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     private float BackAndForthDist = 5f;
     private Vector3 originalPosition;
     private bool movingLeft = true;
+    private int BackAndForthCount = 2, backAndForthCounter = 0;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,12 +34,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     void MoveBackAndForth() {
-        if (Vector3.Distance(transform.position, originalPosition) >= BackAndForthDist)
-        {
-            // Change direction
-            movingLeft = !movingLeft;
-            originalPosition = transform.position;
-        }
+        
 
         // Move the enemy based on its direction
         if (movingLeft)
@@ -65,5 +61,6 @@ public class EnemyMovement : MonoBehaviour
 
         movingLeft = true;
         originalPosition = transform.position;
+        backAndForthCounter = 0;
     }
 }

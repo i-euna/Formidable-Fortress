@@ -77,6 +77,18 @@ public class LevelManager : MonoBehaviour
                     NextLevel = Levels.Level3H;
                 else NextLevel = Levels.Level3E;
                 break;
+            case Levels.Level3E:
+                if (LevelTotalKilled.Value >= 17 &&
+                    LevelTotalAmmo.Value <= 22)
+                    NextLevel = Levels.Level4M;
+                else NextLevel = Levels.Level4E;
+                break;
+            case Levels.Level3H:
+                if (LevelTotalKilled.Value >= 17 &&
+                    LevelTotalAmmo.Value <= 22)
+                    NextLevel = Levels.Level4M;
+                else NextLevel = Levels.Level4H;
+                break;
             default:
                 break;
         }
