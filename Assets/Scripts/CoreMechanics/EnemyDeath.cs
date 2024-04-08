@@ -39,10 +39,11 @@ public class EnemyDeath : MonoBehaviour
             else {
                 if (NeededShots == 1)
                 {
+                    Debug.Log("Death");
                     LevelTotalKilled.Value++;
+                    LevelTotalDestroyed.Value++;
                     EnemyKilledEvent.Raise();
                     EnemyDeathEvent.InvokeEvent(Type.ToString());
-                    LevelTotalDestroyed.Value++;
                     EnemyPool.ObjectPool.Release(gameObject);
                 }
                 else

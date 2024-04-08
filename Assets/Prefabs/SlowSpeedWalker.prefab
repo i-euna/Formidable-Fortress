@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8917748901512619900}
   - component: {fileID: 8903835541098532204}
   - component: {fileID: 9123043000839120104}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SlowSpeedWalker
   m_TagString: Enemy
   m_Icon: {fileID: 0}
