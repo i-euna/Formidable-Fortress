@@ -15,7 +15,7 @@ public class EnemyDeath : MonoBehaviour
     private GameEvent EnemyKilledEvent;
 
     [SerializeField]
-    private GameEvent CastleBreachedEvent;
+    private GameEventWithStr CastleBreachedEvent;
 
     [SerializeField]
     private GameEventWithStr EnemyDeathEvent;
@@ -32,8 +32,8 @@ public class EnemyDeath : MonoBehaviour
         {
             if (other.gameObject.tag == "Castle")
             {
-                CastleBreachedEvent.Raise();
                 LevelTotalDestroyed.Value++;
+                CastleBreachedEvent.InvokeEvent(Type.ToString());
                 EnemyPool.ObjectPool.Release(gameObject);
             }
             else {
