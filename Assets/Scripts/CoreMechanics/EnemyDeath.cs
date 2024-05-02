@@ -37,20 +37,23 @@ public class EnemyDeath : MonoBehaviour
                 EnemyPool.ObjectPool.Release(gameObject);
             }
             else {
-                if (NeededShots == 1)
-                {
-                    Debug.Log("Death");
-                    LevelTotalKilled.Value++;
-                    LevelTotalDestroyed.Value++;
-                    EnemyKilledEvent.Raise();
-                    EnemyDeathEvent.InvokeEvent(Type.ToString());
-                    EnemyPool.ObjectPool.Release(gameObject);
+                if (other.gameObject.GetComponent<CannonShooter>().life >= 0) {
+                    if (NeededShots == 1)
+                    {
+                        Debug.Log("Death");
+                        LevelTotalKilled.Value++;
+                        LevelTotalDestroyed.Value++;
+                        EnemyKilledEvent.Raise();
+                        EnemyDeathEvent.InvokeEvent(Type.ToString());
+                        EnemyPool.ObjectPool.Release(gameObject);
+                    }
+                    else
+                    {
+                        EnemyKilledEvent.Raise();
+                        NeededShots--;
+                    }
                 }
-                else
-                {
-                    EnemyKilledEvent.Raise();
-                    NeededShots--;
-                } 
+                 
                 
             }
         }
