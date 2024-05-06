@@ -38,7 +38,7 @@ public class ShootingArc : MonoBehaviour
 
             targetPosition.z = 0;
 
-            transform.up = targetPosition - transform.position;
+            transform.right = targetPosition - transform.position;
             if (transform.rotation.eulerAngles.z >= 225)
                 SetLineRendererPositions(Arc);
             else EraseArc(Arc);
@@ -65,7 +65,7 @@ public class ShootingArc : MonoBehaviour
     {
         List<Vector2> linePoints = new List<Vector2>(); //Line Renderer Points
         int maxSteps = (int)(MaxDuration / TimeStepInterval);
-        Vector2 direction = transform.up;
+        Vector2 direction = transform.right;
         Vector2 launchPosition = CannonBall.transform.position;
         Velocity = Force / Mass * Time.fixedDeltaTime; // v=at => v=F/m * t
 

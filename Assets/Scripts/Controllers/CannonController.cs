@@ -58,7 +58,7 @@ public class CannonController : MonoBehaviour
     public void PrepareNextCannon() {
         if (AmmoCount.Value != 0)
         {
-            GameObject newCannon = Instantiate(CannonPrefab);
+            GameObject newCannon = Instantiate(CannonPrefab,CannonParent.transform);
 
             //CannonPool.ObjectPool.Get();
 
