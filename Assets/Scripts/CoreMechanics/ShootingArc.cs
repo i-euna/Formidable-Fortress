@@ -22,6 +22,11 @@ public class ShootingArc : MonoBehaviour
     [SerializeField]
     private BoolVariable isFiringCannon;
 
+    private Vector2 calculatedDirection;
+
+    [SerializeField]
+    private GameObject LaunchPoint;
+
     private void Start()
     {
         isFiringCannon.value = false;
@@ -30,7 +35,6 @@ public class ShootingArc : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Angle " + transform.rotation.eulerAngles.z);
         if (!isFiringCannon.value) {
             Vector3 mousePosition = Input.mousePosition;
 
