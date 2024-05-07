@@ -469,6 +469,7 @@ MonoBehaviour:
   Arc: {fileID: 467770050}
   PathToFollow: {fileID: 0}
   isFiringCannon: {fileID: 0}
+  LaunchPoint: {fileID: 0}
 --- !u!212 &467770048
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -853,7 +854,8 @@ MonoBehaviour:
   CannonPrefab: {fileID: 3370032792691091295, guid: b5ae157e6a7c65e40ae78c22d7de2e62, type: 3}
   MaxNoOfCannon: {fileID: 11400000, guid: 26c56772f2a981b45aaeab8a6ce77034, type: 2}
   AmmoCount: {fileID: 11400000, guid: cbe1446975a116f4bacea340a404ae49, type: 2}
-  CannonParent: {fileID: 922373703}
+  LaunchPoint: {fileID: 0}
+  CannonBody: {fileID: 0}
   CheckGameOverEvent: {fileID: 11400000, guid: cb232a04aa7781d449a0fbaee93a369b, type: 2}
   LevelTotalAmmo: {fileID: 11400000, guid: add5bfe65a7b568448b4882a0241c0aa, type: 2}
 --- !u!114 &502148914
@@ -920,7 +922,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.09588221, g: 0.6161255, b: 0.9528302, a: 0}
+  m_BackGroundColor: {r: 0.28627452, g: 0.26666668, b: 0.32156864, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1289,6 +1291,7 @@ MonoBehaviour:
   Arc: {fileID: 922373707}
   PathToFollow: {fileID: 11400000, guid: 0f9c61e320388ad4ea4beb5a7b5e619d, type: 2}
   isFiringCannon: {fileID: 11400000, guid: 7f661ff35f9df174ab07a26608762cfa, type: 2}
+  LaunchPoint: {fileID: 0}
 --- !u!120 &922373707
 LineRenderer:
   serializedVersion: 2
