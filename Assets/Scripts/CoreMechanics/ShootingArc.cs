@@ -43,7 +43,9 @@ public class ShootingArc : MonoBehaviour
             targetPosition.z = 0;
 
             transform.right = targetPosition - transform.position;
-            if (transform.rotation.eulerAngles.z >= 225)
+            //280 to 355
+            if (transform.rotation.eulerAngles.z >= 280 &&
+                transform.rotation.eulerAngles.z <= 355)
                 SetLineRendererPositions(Arc);
             else EraseArc(Arc);
         } 

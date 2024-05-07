@@ -1461,11 +1461,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &922373703 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8334267398340002944, guid: 54504b5056c067346b2dd906b901242e, type: 3}
-  m_PrefabInstance: {fileID: 8409669996549149562}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &922373704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6950745539178480650, guid: 54504b5056c067346b2dd906b901242e, type: 3}
@@ -2425,7 +2420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTapInput: {fileID: 11400000, guid: c3493cec3364fc5458a900ce5ce5ca13, type: 2}
   MouseTapPos: {fileID: 11400000, guid: fdfdd6e011b1bfe4493464813377bb60, type: 2}
-  CannonBody: {fileID: 922373703}
+  CannonBody: {fileID: 482070850}
 --- !u!1 &1775138135
 GameObject:
   m_ObjectHideFlags: 0
