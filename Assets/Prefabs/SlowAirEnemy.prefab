@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6311177553551612503}
   - component: {fileID: 4950792132948810345}
   - component: {fileID: 1165878621937034845}
+  - component: {fileID: 4874278760578366233}
   m_Layer: 6
   m_Name: SlowAirEnemy
   m_TagString: Enemy
@@ -192,3 +193,24 @@ MonoBehaviour:
   EnemyDeathEvent: {fileID: 11400000, guid: 4e870b9876ea3694b9ef82814ac8a0c6, type: 2}
   LevelTotalKilled: {fileID: 11400000, guid: e8ae5a1ed2067234b97d07fa15e4f07f, type: 2}
   LevelTotalDestroyed: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
+--- !u!95 &4874278760578366233
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411277226079468665}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3524916be28604123a74d15455a7e317, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
