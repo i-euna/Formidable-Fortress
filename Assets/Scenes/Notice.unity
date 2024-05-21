@@ -771,7 +771,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1441534339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b37d44aa7621b854582e8c3825d240e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d6315acaecb31a40b83c800f3e43ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1868984865
@@ -858,8 +858,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1441534341}
-        m_TargetAssemblyTypeName: StartPlay, Assembly-CSharp
-        m_MethodName: StartPlaying
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: GoToHome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
