@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 37, y: -39.03}
-  m_SizeDelta: {x: 156.13, y: 78.06}
+  m_AnchoredPosition: {x: 129.38, y: -64.685}
+  m_SizeDelta: {x: 258.76, y: 129.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15891133
 MonoBehaviour:
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Formiddable Fortress
+  m_text: Formidable Fortress
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c7c60a27711c4578bdb64a12e80948f, type: 2}
   m_sharedMaterial: {fileID: 3461913073858155930, guid: 4c7c60a27711c4578bdb64a12e80948f, type: 2}
