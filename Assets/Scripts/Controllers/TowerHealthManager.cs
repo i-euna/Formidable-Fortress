@@ -37,6 +37,9 @@ public class TowerHealthManager : MonoBehaviour
             case EnemyType.FAST_WALKER_2SHOTS:
                 damage = 50;
                 break;
+            case EnemyType.FAST_WALKER_BULLET:
+                damage = 5;
+                break;
             default:
                 damage = 10;
                 break;
