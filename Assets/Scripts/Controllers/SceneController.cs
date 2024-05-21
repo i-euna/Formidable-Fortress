@@ -14,4 +14,9 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
         Time.timeScale = 1;
     }
+
+    public void GoToHome()
+    {
+        LoadSceneWithName("Menu");
+    }
 }
