@@ -560,7 +560,7 @@ MonoBehaviour:
   TotalSpawnedEnemy: {fileID: 11400000, guid: 3c2a9584a0da08346a1d6277556d333b, type: 2}
   TotalKilledEnemy: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
   MinSpawnInterval: 1
-  MaxSpawnInterval: 9
+  MaxSpawnInterval: 5
   SlowAirSpeed: {fileID: 11400000, guid: c6f58c1901d21af4fb8ee7015576afd0, type: 2}
   MediumAirSpeed: {fileID: 11400000, guid: 4fd11d65da80ee644b0533f575ee3674, type: 2}
   FastAirSpeed: {fileID: 11400000, guid: 823d05dfa7faed146bdd508dbad1d4ae, type: 2}
