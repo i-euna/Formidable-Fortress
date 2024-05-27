@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9123043000839120104}
   - component: {fileID: 4981802237715094433}
   m_Layer: 6
-  m_Name: SlowSpeedWalker
+  m_Name: SlowGround
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,9 +31,9 @@ Transform:
   m_GameObject: {fileID: 7009810750117976898}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.41, y: -5.04, z: -0.050362147}
+  m_LocalPosition: {x: 11.11, y: -3.18, z: -0.050362147}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

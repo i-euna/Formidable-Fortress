@@ -11,8 +11,8 @@ public class SceneController : MonoBehaviour
     }
 
     public static void LoadSceneWithName(string sceneName) {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
         Time.timeScale = 1;
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
     public void GoToHome()

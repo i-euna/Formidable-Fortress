@@ -2210,8 +2210,8 @@ MonoBehaviour:
   LevelTotalKilled: {fileID: 11400000, guid: e8ae5a1ed2067234b97d07fa15e4f07f, type: 2}
   LevelFailurePanel: {fileID: 183302232274871684}
   LevelSuccessPanel: {fileID: 6572130890541932425}
-  CurrentLevel: 2
-  NextLevel: 3
+  CurrentLevel: 3
+  NextLevel: 5
 --- !u!114 &2127959634
 MonoBehaviour:
   m_ObjectHideFlags: 0

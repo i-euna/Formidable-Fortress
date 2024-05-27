@@ -416,10 +416,12 @@ MonoBehaviour:
   AirEnemyPool: {fileID: 11400000, guid: 6b36768f15750fa4d9d1ce4faf0b1515, type: 2}
   MediumSpeedWalkerPool: {fileID: 11400000, guid: d11bb5bc207cb704f86cdddc1340d277, type: 2}
   HighSpeedWalkerPool: {fileID: 11400000, guid: dd13fe120567310489c6c73ae0a0cd14, type: 2}
-  WalkerEnemyPrefab: {fileID: 1927905966}
-  AirEnemyPrefab: {fileID: 411277226079468665, guid: 0078281f43d1e6647905d4ba0386814e, type: 3}
-  MediumSpeedWalkerPrefab: {fileID: 1163327772}
-  HighSpeedWalkerPrefab: {fileID: 2005642460}
+  SlowGroundEnemy: {fileID: 7009810750117976898, guid: 5c2de2ee18a16204f9d348cc0f7681c5, type: 3}
+  MediumGroundEnemy: {fileID: 7009810750117976898, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
+  FastGroundEnemy: {fileID: 7145474700549659879, guid: 3d32c93401d032648985c6cdb48d741b, type: 3}
+  SlowAirEnemy: {fileID: 411277226079468665, guid: 0078281f43d1e6647905d4ba0386814e, type: 3}
+  MediumAirEnemy: {fileID: 411277226079468665, guid: cf1d06a03e3414f2782ba957f4226835, type: 3}
+  FastAirEnemy: {fileID: 411277226079468665, guid: 9d04cd6b2f5264b468e7d878cdf5f0a0, type: 3}
   MaxNoOfEnemies: {fileID: 11400000, guid: 5042ae44b3fbfd148bd40f635127ce84, type: 2}
   InitialWaitTime: {fileID: 11400000, guid: c592cbd635a2a7d43848f80bfb632566, type: 2}
   EnemyRepeatRate: {fileID: 11400000, guid: d65517b5ef3c8904c85af02208cad22e, type: 2}
@@ -1535,11 +1537,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
---- !u!1 &1163327772 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7009810750117976898, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
-  m_PrefabInstance: {fileID: 1163327771}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1163327773 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5519997353928943234, guid: 1e43a79880e7f2e4a81c205590a74e7e, type: 3}
@@ -2012,11 +2009,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775138135}
   m_CullTransparentMesh: 1
---- !u!1 &1927905966 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7009810750117976898, guid: 5c2de2ee18a16204f9d348cc0f7681c5, type: 3}
-  m_PrefabInstance: {fileID: 1675787604350754045}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1927905967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5519997353928943234, guid: 5c2de2ee18a16204f9d348cc0f7681c5, type: 3}
@@ -2056,11 +2048,6 @@ Transform:
   - {fileID: 1034609487}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2005642460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7145474700549659879, guid: 3d32c93401d032648985c6cdb48d741b, type: 3}
-  m_PrefabInstance: {fileID: 3703036225664760887}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2095669920
 GameObject:
   m_ObjectHideFlags: 0
