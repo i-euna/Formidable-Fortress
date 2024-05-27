@@ -76,11 +76,10 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Loading next ");
         switch (CurrentLevel) {
             case Levels.Level2:
-                NextLevel = Levels.Notice;
-                //if (GameTotalKilled.Value >= 25 &&
-                //    GameTotalAmmo.Value <= 30)
-                //    NextLevel = Levels.Level3H;
-                //else NextLevel = Levels.Level3E;
+                if (GameTotalKilled.Value >= 25 &&
+                    GameTotalAmmo.Value <= 30)
+                    NextLevel = Levels.Level3H;
+                else NextLevel = Levels.Level3E;
                 break;
             case Levels.Level3E:
                 if (LevelTotalKilled.Value >= 17 &&
