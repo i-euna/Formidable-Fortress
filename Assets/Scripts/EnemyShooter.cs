@@ -26,6 +26,7 @@ public class EnemyShooter : MonoBehaviour
     void Fire()
     {
         GameObject bullet = Instantiate(bulletPrefab, this.transform);
+        bullet.transform.SetParent(null);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
