@@ -192,7 +192,7 @@ public class EnemyController : MonoBehaviour
                     ListManipulator
                         .AddMultipleTimes(
                             enemyTypes,
-                            EnemyType.MEDIUM_WALKER_2SHOTS,
+                            EnemyType.FAST_WALKER_2SHOTS,
                             r.Value
                         );
                     break;
@@ -365,6 +365,7 @@ public class EnemyController : MonoBehaviour
                         .SetConfigs(EnemyType.FAST_WALKER_2SHOTS, 2);
                 break;
             case EnemyType.SLOW_WALKER_1SHOTS_UNPREDICTABLE:
+                Debug.Log("Expect unpredictable");
                 newEnemy = Instantiate(
                     SlowGroundEnemy,
                     SlowGroundEnemy.transform.position,
@@ -401,7 +402,7 @@ public class EnemyController : MonoBehaviour
                    SlowAirEnemy.transform.position,
                    SlowAirEnemy.transform.rotation);
                 newEnemy.GetComponent<EnemyMovement>()
-                        .SetConfigs(SlowAirSpeed, false);
+                        .SetConfigs(SlowAirSpeed, true);
                 newEnemy.GetComponent<EnemyDeath>()
                         .SetConfigs(EnemyType.SLOW_AIR, 1);
                 break;
@@ -411,7 +412,7 @@ public class EnemyController : MonoBehaviour
                    MediumAirEnemy.transform.position,
                    MediumAirEnemy.transform.rotation);
                 newEnemy.GetComponent<EnemyMovement>()
-                        .SetConfigs(MediumAirSpeed, false);
+                        .SetConfigs(MediumAirSpeed, true);
                 newEnemy.GetComponent<EnemyDeath>()
                         .SetConfigs(EnemyType.MEDIUM_AIR, 1);
                 break;
@@ -421,7 +422,7 @@ public class EnemyController : MonoBehaviour
                    FastAirEnemy.transform.position,
                    FastAirEnemy.transform.rotation);
                 newEnemy.GetComponent<EnemyMovement>()
-                        .SetConfigs(FastAirSpeed, false);
+                        .SetConfigs(FastAirSpeed, true);
                 newEnemy.GetComponent<EnemyDeath>()
                         .SetConfigs(EnemyType.FAST_AIR, 1);
                 break;
@@ -431,7 +432,7 @@ public class EnemyController : MonoBehaviour
                     FastAirEnemy.transform.position,
                     FastAirEnemy.transform.rotation);
                 newEnemy.GetComponent<EnemyMovement>()
-                        .SetConfigs(FastAirSpeed, true);
+                        .SetConfigs(FastAirSpeed, false);
                 newEnemy.GetComponent<EnemyDeath>()
                         .SetConfigs(EnemyType.FAST_AIR, 1);
                 break;
