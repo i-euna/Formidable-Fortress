@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6311177553551612503}
   - component: {fileID: 4950792132948810345}
   - component: {fileID: 1165878621937034845}
-  - component: {fileID: 4874278760578366233}
+  - component: {fileID: 3369866094085232584}
   m_Layer: 6
   m_Name: FastAir
   m_TagString: Enemy
@@ -174,6 +174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: {fileID: 11400000, guid: c6f58c1901d21af4fb8ee7015576afd0, type: 2}
+  ForwardDuration: 5
+  ReverseDuration: 1
 --- !u!114 &1165878621937034845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +195,7 @@ MonoBehaviour:
   EnemyDeathEvent: {fileID: 11400000, guid: 4e870b9876ea3694b9ef82814ac8a0c6, type: 2}
   LevelTotalKilled: {fileID: 11400000, guid: e8ae5a1ed2067234b97d07fa15e4f07f, type: 2}
   LevelTotalDestroyed: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
---- !u!95 &4874278760578366233
+--- !u!95 &3369866094085232584
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -203,7 +205,7 @@ Animator:
   m_GameObject: {fileID: 411277226079468665}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3524916be28604123a74d15455a7e317, type: 2}
+  m_Controller: {fileID: 9100000, guid: a56677274db5b204a8eef5a9afc3a79a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
