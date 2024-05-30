@@ -25,8 +25,12 @@ public class EnemyShooter : MonoBehaviour
 
     void Fire()
     {
-        GameObject bullet = Instantiate(bulletPrefab, this.transform);
-        bullet.transform.SetParent(null);
+        //Vector3 newPos = new Vector3(1.7f, -2.04f, 0f);
+        GameObject bullet = Instantiate(bulletPrefab,
+            firePoint);
+        bullet.transform.parent = null;
+        bullet.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f); ;
+        //.SetParent(null);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
