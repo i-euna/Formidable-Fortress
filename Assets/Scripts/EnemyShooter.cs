@@ -8,6 +8,8 @@ public class EnemyShooter : MonoBehaviour
     public float bulletSpeed = 5f;
     private float fireTimer;
 
+    [SerializeField] private GameEvent EnemyShootEvent;
+
     void Start()
     {
         fireTimer = 3f;
@@ -25,6 +27,7 @@ public class EnemyShooter : MonoBehaviour
 
     void Fire()
     {
+        EnemyShootEvent.Raise();
         //Vector3 newPos = new Vector3(1.7f, -2.04f, 0f);
         GameObject bullet = Instantiate(bulletPrefab,
             firePoint);

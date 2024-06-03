@@ -197,6 +197,9 @@ MonoBehaviour:
   EnemyDeathEvent: {fileID: 11400000, guid: 4e870b9876ea3694b9ef82814ac8a0c6, type: 2}
   LevelTotalKilled: {fileID: 11400000, guid: e8ae5a1ed2067234b97d07fa15e4f07f, type: 2}
   LevelTotalDestroyed: {fileID: 11400000, guid: 9964a0f9907ebd74397fe925dcf053ee, type: 2}
+  LifeIndicator: {fileID: 0}
+  Life1: {fileID: 0}
+  Life2: {fileID: 0}
 --- !u!95 &3369866094085232584
 Animator:
   serializedVersion: 5
@@ -234,6 +237,7 @@ MonoBehaviour:
   firePoint: {fileID: 8177246834176886295}
   fireInterval: 2
   bulletSpeed: 5
+  EnemyShootEvent: {fileID: 11400000, guid: 7ab83c413d9eb460cb48cadbe2384225, type: 2}
 --- !u!1 &7078527538877893832
 GameObject:
   m_ObjectHideFlags: 0

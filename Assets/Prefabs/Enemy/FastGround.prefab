@@ -302,6 +302,7 @@ MonoBehaviour:
   firePoint: {fileID: 8332405717024784622}
   fireInterval: 2
   bulletSpeed: 20
+  EnemyShootEvent: {fileID: 11400000, guid: 7ab83c413d9eb460cb48cadbe2384225, type: 2}
 --- !u!1 &7656794026935934450
 GameObject:
   m_ObjectHideFlags: 0
