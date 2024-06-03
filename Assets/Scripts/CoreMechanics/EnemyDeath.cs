@@ -23,6 +23,9 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField]
     private IntVariable LevelTotalKilled, LevelTotalDestroyed;
 
+    [SerializeField]
+    private GameObject LifeIndicator, Life1, Life2;
+
     private int NeededShots;
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -49,6 +52,7 @@ public class EnemyDeath : MonoBehaviour
                     }
                     else
                     {
+                        Life2.SetActive(false);
                         EnemyKilledEvent.Raise();
                         NeededShots--;
                     }
@@ -68,7 +72,14 @@ public class EnemyDeath : MonoBehaviour
     }
 
     public void SetConfigs(EnemyType enemyType, int shotCount) {
+
         Type = enemyType;
         NeededShots = shotCount;
+
+        if (NeededShots == 2)
+        {
+            LifeIndicator.SetActive(true);
+        }
+            
     }
 }

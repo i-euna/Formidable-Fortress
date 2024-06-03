@@ -42,8 +42,9 @@ public class LevelManager : MonoBehaviour
 
         //if all enemies are killed/destroyed
         //level success
+        Debug.Log("Checking Game Over " + Health.Value);
 
-        if (Health.Value == 0 || AmmoCount.Value <= 0)
+        if (Health.Value <= 0 || AmmoCount.Value <= 0)
         {
             HandleLevelFailure();
         }

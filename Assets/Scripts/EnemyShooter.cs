@@ -10,7 +10,7 @@ public class EnemyShooter : MonoBehaviour
 
     void Start()
     {
-        fireTimer = fireInterval;
+        fireTimer = 3f;
     }
 
     void Update()
